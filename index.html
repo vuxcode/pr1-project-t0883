@@ -1,10 +1,19 @@
+<button id="button1">Square 1</button>
 <script>
-    var board = [
-        ["1", "2", "3"],
-        ["4", "5", "6"],
-        ["7", "8", "9"], 
-       ];
-    var player1 = "X"
-    var player2 = "O"
+var board = [
+    ["0", "1", "2"],
+    ["3", "4", "5"],
+    ["6", "7", "8"]];
+console.log(board.join("\n") + "\n\n");
+var player1 = "X";
+var player2 = "O";
+var square1 = document.getElementById('button1');
+console.log(board.join("\n") + "\n\n");
+square1.addEventListener("click", playerX);
+function playerX() {
+    board[0] = "X";
+    console.log(board.join("\n"));
+}
+
 
 </script>
