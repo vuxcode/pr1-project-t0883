@@ -1,8 +1,47 @@
-<h1 style="color:tomato;">Hi! Welcome to this epic tic-tac-toe face off!</h1>
-<button id="abc">Square</button>
+<<<<<<< Updated upstream
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>tic-tac-toe</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .board {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            justify-items: center;
+            align-items: center;
+            grid-template-columns: repeat(3, auto);
+        }
+        .button {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+=======
+<h1 style='color:tomato;'>Hi! Welcome to this epic tic-tac-toe face off!</h1>
+<button id='abc'>Square</button>
+<button id='bcd'>Square</button>
 <script>
     // This is the board
-var board = [['0', '1', '2'],['3', '4', '5'],['6', '7', '8']];
+var board = [['A', 'B', 'C'],['D', 'E', 'F'],['G', 'H', 'I']];
 console.log(board.join('\n'));
 var player1 = 'X';
 var player2 = 'O';
@@ -12,13 +51,20 @@ console.log(board.length);
 // Checking the "second" array. 
 console.log(board[1,1]);
 
+for (var row = 0; row < board.length; row++) {
+    for (var col = 0; col < board.length; col++) {
+        console.log(board);
+    }
+}
+
 // Added a button that should update array 1 to an X, I want it to only change the number 4 in the second array. 
 // Problem here is that I changes the hole array to an X.
 abc.addEventListener('click', playerX);
 function playerX() {
-    board.splice(1, 1, 'X');
+    board[1][1] = 'X';
     console.log(board.join('\n'));
     console.log(board[1,1]);
     console.log(board.length);
 }
 </script>
+>>>>>>> Stashed changes
