@@ -31,46 +31,144 @@
     </style>
 </head>
 <body>
-    <div class="board" id="baord">
+    <div class="board" id="board">
         <button onclick="square0()" class="button" id="0"></button>
         <button onclick="square1()" class="button" id="1"></button>
         <button onclick="square2()" class="button" id="2"></button>
         <button onclick="square3()" class="button" id="3"></button>
-        <button onclick="" class="button" id="4"></button>
-        <button onclick="" class="button" id="5"></button>
-        <button onclick="" class="button" id="6"></button>
-        <button onclick="" class="button" id="7"></button>
-        <button onclick="" class="button" id="8"></button>
+        <button onclick="square4()" class="button" id="4"></button>
+        <button onclick="square5()" class="button" id="5"></button>
+        <button onclick="square6()" class="button" id="6"></button>
+        <button onclick="square7()" class="button" id="7"></button>
+        <button onclick="square8()" class="button" id="8"></button>
     </div>
     <script>
+        // Variables at the top
+        // This is the playingboard
         var playingBoard = [["A","B","C"],
                             ["D","E","F"],
                             ["G","H","J"]];
+        // Here im just checking things 
+        var boardBoard = document.getElementById("board");
+        // Checking checking thingys
+        console.log(boardBoard);
         console.log(playingBoard);
+        var btn0 = document.getElementById("0")
+        var btn1 = document.getElementById("1")
+        var btn2 = document.getElementById("2")
+        var btn3 = document.getElementById("3")
+        var btn4 = document.getElementById("4")
+        var btn5 = document.getElementById("5")
+        var btn6 = document.getElementById("6")
+        var btn7 = document.getElementById("7")
+        var btn8 = document.getElementById("8")
 
-        function hello() {
-            console.log("Is this working?");
+        var btn = [btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8];
+        console.log(btn);
+        console.log(btn.length);        
+        // Here im creating functions that I wanna combine at a late stage
+        // This function is placing an O
+        function placeX() {
+            if (btn == "") {
+                btn.innerText = "O";
+            }
+            else {
+                btn.innerText = "X";
+                console.log("This part is running");
+            }
         }
+        // function placeO() {
+        //     if (btn == "") {
+        //         btn.innerText = "X";
+        //     }
+        //     else {
+        //         btn.innerText = "O";
+        //     }
+        // }
+        function swapTurn() {
+
+        }
+        // function placeMarker() {
+        //     if ()
+        // }
+        // function hello() {
+        //     console.log("Is this working?");
+        // }
+
         function square0() {
             playingBoard[0][0] = "X"
             console.log(playingBoard.join("\n"));
             console.log(playingBoard.length);
+            btn0.innerText = "X"
+            placeX();
+            placeO();
+            console.log(btn);
+            console.log(btn.length);
         }
         function square1() {
             playingBoard[0][1] = "X"
             console.log(playingBoard.join("\n"));
             console.log(playingBoard.length);
+            placeX();
+            placeO();
+
         }
         function square2() {
             playingBoard[0][2] = "X"
             console.log(playingBoard.join("\n"));
             console.log(playingBoard.length);
+            placeX();
+            placeO();
+
         }
         function square3() {
             playingBoard[1][0] = "X"
             console.log(playingBoard.join("\n"));
             console.log(playingBoard.length);
+            placeX();
+            placeO();
         }
+
+        function square4() {
+            playingBoard[1][1] = "X"
+            console.log(playingBoard.join("\n"));
+            console.log(playingBoard.length);
+            placeX();
+            placeO();
+        }
+
+        function square5() {
+            playingBoard[1][2] = "X"
+            console.log(playingBoard.join("\n"));
+            console.log(playingBoard.length);
+            placeX();
+            placeO();
+        }
+
+        function square6() {
+            playingBoard[2][0] = "X"
+            console.log(playingBoard.join("\n"));
+            console.log(playingBoard.length);
+            placeX();
+            placeO();
+        }
+
+        function square7() {
+            playingBoard[2][1] = "X"
+            console.log(playingBoard.join("\n"));
+            console.log(playingBoard.length);
+            placeX();
+            placeO();
+        }
+
+        function square8() {
+            playingBoard[2][2] = "X"
+            console.log(playingBoard.join("\n"));
+            console.log(playingBoard.length);
+            placeX();
+            placeO();
+        }
+
 
     </script>
 </body>
