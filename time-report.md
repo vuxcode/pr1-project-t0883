@@ -14,3 +14,6 @@
   and now I feel like I have something so submit and show. There is still things to do such as adding the 0 player, getting the buttons to
   display X and O and much more. I have for now invested about 10 hours in this project with most of it have been used to read up on 
   CSS styling. Sorry for not updating the project but I will be more frequent for now and on until final submission.
+-2022-04-20
+  Added some functions that I wanna use. Want to make them work and then in a late stage combine them in 1 function. For now the 
+  program just places Xs. For no I have invested 11 hours in the program including research and learning new things
