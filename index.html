@@ -61,7 +61,8 @@
             // Here we assign the first index in the array "swap" to "X"
             swap[0] = "X";
             console.log(swap);
-            // We also want to add our input to another array
+            // We also want to add our input to the "board" array. The "board" array is going to check 
+            // if the script is not runing forever. 
             board.push("X");
             console.log(board);
         }
@@ -70,6 +71,7 @@
             // Here we assign the first index in the array "swap" to "O"
             swap[0] = "O";
             console.log(swap);
+            // Adding "O" to the "board" array
             board.push("O");
             console.log(board);
         }
@@ -88,13 +90,30 @@
 
             }
         }
+
+        // function endGame() {
+        //     // This function is going to be the endgame screen. This function needs to check and also 
+        //     // show if someone is a winner or if its a draw.
+        //     if (player x condition here) {
+        //         console.log("Player X is the winner");
+        //     }
+        //     else if (player os condition here) {
+        //         console.log("Player O is the winner");
+        //     }
+        //     else if (draw condtion here) {
+        //         console.log("Draw");
+        //     }
+        //     else {
+        //         console.log("keep running the game");
+        //     }
+        // }
         
-        function endGame() {
+        function placeMark() {
             if (board.length <= 8) {
                 swapTurn();
             }
             else {
-                console.log("endgame");
+                console.log("placeMark");
             }
         }
 
@@ -105,89 +124,62 @@
             var button = document.getElementById("0");
             button.innerText = swap[0];
             button.disabled = true;
-            // console.log(playingBoard.join("\n"));
-            // console.log(playingBoard.length);
-            // swapTurn();
-            endGame();
+            placeMark();
         }
         function square1() {
             var button = document.getElementById("1");
             button.innerText = swap[0];
             button.disabled = true;
-            // console.log(playingBoard.join("\n"));
-            // console.log(playingBoard.length);
-            // swapTurn();
-            endGame();
+            placeMark();
 
         }
         function square2() {
             var button = document.getElementById("2");
             button.innerText = swap[0];
             button.disabled = true;
-            // console.log(playingBoard.join("\n"));
-            // console.log(playingBoard.length);
-            // swapTurn();
-            endGame();
+            placeMark();
 
         }
         function square3() {
             var button = document.getElementById("3");
             button.innerText = swap[0];
             button.disabled = true;
-            // console.log(playingBoard.join("\n"));
-            // console.log(playingBoard.length);
-            // swapTurn();
-            endGame();
+            placeMark();
         }
 
         function square4() {
             var button = document.getElementById("4");
             button.innerText = swap[0];
             button.disabled = true;
-            // console.log(playingBoard.join("\n"));
-            // console.log(playingBoard.length);
-            // swapTurn();
-            endGame();
+            placeMark();
         }
 
         function square5() {
             var button = document.getElementById("5");
             button.innerText = swap[0];
             button.disabled = true;
-            // console.log(playingBoard.join("\n"));
-            // console.log(playingBoard.length);
-            // swapTurn();
-            endGame();
+            placeMark();
         }
 
         function square6() {
             var button = document.getElementById("6");
             button.innerText = swap[0];
             button.disabled = true;
-            // console.log(playingBoard.join("\n"));
-            // console.log(playingBoard.length);
-            // swapTurn();
-            endGame();
+            placeMark();
         }
 
         function square7() {
             var button = document.getElementById("7");
             button.innerText = swap[0];
             button.disabled = true;
-            // console.log(playingBoard.join("\n"));
-            // console.log(playingBoard.length);
-            // swapTurn();
-            endGame();
+            placeMark();
         }
 
         function square8() {
             var button = document.getElementById("8");
             button.innerText = swap[0];
             button.disabled = true;
-            // console.log(playingBoard.join("\n"));
-            // console.log(playingBoard.length);
-            // swapTurn();
-            endGame();
+            placeMark();
         }
 
 
