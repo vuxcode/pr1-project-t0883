@@ -54,7 +54,7 @@
         console.log(swap);
         console.log(board);
         console.log(playingBoard);
-        // Functions
+        // Functions starting with the players
         function playerX() {
             // Here we assign the first index in the array "swap" to "X"
             swap[0] = "X";
@@ -71,7 +71,7 @@
             board.push("O");
             console.log(board);
         }
-
+        // Functions that makes the game playable
         function swapTurn() {
             // Here we want to check if the index of the "swap" array is equal to "X". If it is it will place a "0"
             if (swap == "X") {
@@ -85,13 +85,25 @@
 
             }
         }
+        function endGame() {
+            if (board.length <= 9) {
+                console.log("Here I want to end and check if the game is a draw or if someone won.");
+            }
+            else {
+                console.log("endgame");
+            }
+        }
 
+
+
+        // These is the buttons. Starting with 0 since arrays index starts at 0. 
         function square0() {
             var button = document.getElementById("0");
             button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             swapTurn();
+            endGame();
         }
         function square1() {
             var button = document.getElementById("1");
