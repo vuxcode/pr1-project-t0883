@@ -32,23 +32,28 @@
 </head>
 <body>
     <div class="board" id="board">
-        <input type="button" onclick="swapTurn()" class="button" id="0"></input>
-        <input type="button" onclick="swapTurn()" class="button" id="1"></input>
-        <input type="button" onclick="swapTurn()" class="button" id="2"></input>
-        <input type="button" onclick="swapTurn()" class="button" id="3"></input>
-        <input type="button" onclick="swapTurn()" class="button" id="4"></input>
-        <input type="button" onclick="swapTurn()" class="button" id="5"></input>
-        <input type="button" onclick="swapTurn()" class="button" id="6"></input>
-        <input type="button" onclick="swapTurn()" class="button" id="7"></input>
-        <input type="button" onclick="swapTurn()" class="button" id="8"></input>
+        <button onclick="square0()" class="button" id="0"></button>
+        <button onclick="square1()" class="button" id="1"></button>
+        <button onclick="square2()" class="button" id="2"></button>
+        <button onclick="square3()" class="button" id="3"></button>
+        <button onclick="square4()" class="button" id="4"></button>
+        <button onclick="square5()" class="button" id="5"></button>
+        <button onclick="square6()" class="button" id="6"></button>
+        <button onclick="square7()" class="button" id="7"></button>
+        <button onclick="square8()" class="button" id="8"></button>
     </div>
     <script>
+
         // Varibles at the top
+        var playingBoard = [["A","B","C"],
+                            ["D","E","F"],
+                            ["G","H","J"]];       
         var swap = [];
         var board = [];
         // Checking the varibles
         console.log(swap);
         console.log(board);
+        console.log(playingBoard);
         // Functions
         function playerX() {
             // Here we assign the first index in the array "swap" to "X"
@@ -80,6 +85,69 @@
 
             }
         }
+
+        function square0() {
+            
+            // console.log(playingBoard.join("\n"));
+            // console.log(playingBoard.length);
+            swapTurn();
+        }
+        function square1() {
+            
+            // console.log(playingBoard.join("\n"));
+            // console.log(playingBoard.length);
+            swapTurn();
+
+        }
+        function square2() {
+            
+            // console.log(playingBoard.join("\n"));
+            // console.log(playingBoard.length);
+            swapTurn();
+
+        }
+        function square3() {
+            
+            // console.log(playingBoard.join("\n"));
+            // console.log(playingBoard.length);
+            swapTurn();
+        }
+
+        function square4() {
+            
+            // console.log(playingBoard.join("\n"));
+            // console.log(playingBoard.length);
+            swapTurn();
+        }
+
+        function square5() {
+            
+            // console.log(playingBoard.join("\n"));
+            // console.log(playingBoard.length);
+            swapTurn();
+        }
+
+        function square6() {
+            
+            // console.log(playingBoard.join("\n"));
+            // console.log(playingBoard.length);
+            swapTurn();
+        }
+
+        function square7() {
+            
+            // console.log(playingBoard.join("\n"));
+            // console.log(playingBoard.length);
+            swapTurn();
+        }
+
+        function square8() {
+            
+            // console.log(playingBoard.join("\n"));
+            // console.log(playingBoard.length);
+            swapTurn();
+        }
+
 
     </script>
 </body>
