@@ -71,6 +71,7 @@
             board.push("O");
             console.log(board);
         }
+
         // Functions that makes the game playable
         function swapTurn() {
             // Here we want to check if the index of the "swap" array is equal to "X". If it is it will place a "0"
@@ -85,6 +86,7 @@
 
             }
         }
+        
         function endGame() {
             if (board.length <= 8) {
                 swapTurn();
@@ -100,6 +102,7 @@
         function square0() {
             var button = document.getElementById("0");
             button.innerText = swap[0];
+            button.disabled = true;
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             // swapTurn();
@@ -108,6 +111,7 @@
         function square1() {
             var button = document.getElementById("1");
             button.innerText = swap[0];
+            button.disabled = true;
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             // swapTurn();
@@ -117,6 +121,7 @@
         function square2() {
             var button = document.getElementById("2");
             button.innerText = swap[0];
+            button.disabled = true;
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             // swapTurn();
@@ -126,6 +131,7 @@
         function square3() {
             var button = document.getElementById("3");
             button.innerText = swap[0];
+            button.disabled = true;
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             // swapTurn();
@@ -135,6 +141,7 @@
         function square4() {
             var button = document.getElementById("4");
             button.innerText = swap[0];
+            button.disabled = true;
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             // swapTurn();
@@ -144,6 +151,7 @@
         function square5() {
             var button = document.getElementById("5");
             button.innerText = swap[0];
+            button.disabled = true;
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             // swapTurn();
@@ -153,6 +161,7 @@
         function square6() {
             var button = document.getElementById("6");
             button.innerText = swap[0];
+            button.disabled = true;
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             // swapTurn();
@@ -162,6 +171,7 @@
         function square7() {
             var button = document.getElementById("7");
             button.innerText = swap[0];
+            button.disabled = true;
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             // swapTurn();
@@ -171,9 +181,7 @@
         function square8() {
             var button = document.getElementById("8");
             button.innerText = swap[0];
-            // if (swap == "X") {
-            //     button.innerText
-            // }
+            button.disabled = true;
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             // swapTurn();
@@ -187,4 +195,4 @@
 
 
 <!-- Notes -->
-<!-- Next step is to make the buttons noclickable after they have been clicked once -->
+<!-- Next step is to make a winning message pop up -->
