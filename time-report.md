@@ -16,4 +16,7 @@
   CSS styling. Sorry for not updating the project but I will be more frequent for now and on until final submission.
 -2022-04-20
   Added some functions that I wanna use. Want to make them work and then in a late stage combine them in 1 function. For now the 
-  program just places Xs. For no I have invested 11 hours in the program including research and learning new things
+  program just places Xs. For no I have invested 11 hours in the program including research and learning new things.
+-2022-04-28
+  Re did the hole script. I think I have been thinking a bit wrong and I finally we able to get things right. Now the functions do just like I 
+  want to and they update the arrays as expected. 
