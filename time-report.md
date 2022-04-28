@@ -22,3 +22,5 @@
   want to and they update the arrays as expected. 
   I have spent about 4 hours now adding CSS and making functions that makes sense. 
   Total spent time on project is now 15 hours and im about to pass the halfway mark for this project.
+  Put in some hours today and the total time is now 17 hours. Working on geting a win/tie message and also for a function that can check for a winner while the
+  game is running.  
