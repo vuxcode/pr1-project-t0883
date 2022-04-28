@@ -48,7 +48,7 @@
         var playingBoard = [["A","B","C"],
                             ["D","E","F"],
                             ["G","H","J"]];       
-        var swap = [];
+        var swap = ["X"];
         var board = [];
         // Checking the varibles
         console.log(swap);
@@ -87,62 +87,74 @@
         }
 
         function square0() {
-            
+            var button = document.getElementById("0");
+            button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             swapTurn();
         }
         function square1() {
-            
+            var button = document.getElementById("1");
+            button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             swapTurn();
 
         }
         function square2() {
-            
+            var button = document.getElementById("2");
+            button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             swapTurn();
 
         }
         function square3() {
-            
+            var button = document.getElementById("3");
+            button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             swapTurn();
         }
 
         function square4() {
-            
+            var button = document.getElementById("4");
+            button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             swapTurn();
         }
 
         function square5() {
-            
+            var button = document.getElementById("5");
+            button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             swapTurn();
         }
 
         function square6() {
-            
+            var button = document.getElementById("6");
+            button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             swapTurn();
         }
 
         function square7() {
-            
+            var button = document.getElementById("7");
+            button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             swapTurn();
         }
 
         function square8() {
-            
+            var button = document.getElementById("8");
+            button.innerText = swap[0];
+            // if (swap == "X") {
+            //     button.innerText
+            // }
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
             swapTurn();
@@ -152,3 +164,7 @@
     </script>
 </body>
 </html>
+
+
+<!-- Notes -->
+<!-- Next step is to add so that the buttons update with either an X or and O -->
