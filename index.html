@@ -86,8 +86,8 @@
             }
         }
         function endGame() {
-            if (board.length <= 9) {
-                console.log("Here I want to end and check if the game is a draw or if someone won.");
+            if (board.length <= 8) {
+                swapTurn();
             }
             else {
                 console.log("endgame");
@@ -102,7 +102,7 @@
             button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
-            swapTurn();
+            // swapTurn();
             endGame();
         }
         function square1() {
@@ -110,7 +110,8 @@
             button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
-            swapTurn();
+            // swapTurn();
+            endGame();
 
         }
         function square2() {
@@ -118,7 +119,8 @@
             button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
-            swapTurn();
+            // swapTurn();
+            endGame();
 
         }
         function square3() {
@@ -126,7 +128,8 @@
             button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
-            swapTurn();
+            // swapTurn();
+            endGame();
         }
 
         function square4() {
@@ -134,7 +137,8 @@
             button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
-            swapTurn();
+            // swapTurn();
+            endGame();
         }
 
         function square5() {
@@ -142,7 +146,8 @@
             button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
-            swapTurn();
+            // swapTurn();
+            endGame();
         }
 
         function square6() {
@@ -150,7 +155,8 @@
             button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
-            swapTurn();
+            // swapTurn();
+            endGame();
         }
 
         function square7() {
@@ -158,7 +164,8 @@
             button.innerText = swap[0];
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
-            swapTurn();
+            // swapTurn();
+            endGame();
         }
 
         function square8() {
@@ -169,7 +176,8 @@
             // }
             // console.log(playingBoard.join("\n"));
             // console.log(playingBoard.length);
-            swapTurn();
+            // swapTurn();
+            endGame();
         }
 
 
@@ -179,4 +187,4 @@
 
 
 <!-- Notes -->
-<!-- Next step is to add so that the buttons update with either an X or and O -->
+<!-- Next step is to make the buttons noclickable after they have been clicked once -->
