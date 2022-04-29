@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="color-scheme" content="dark">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>tic-tac-toe</title>
@@ -9,9 +8,62 @@
         body {
             margin: 0;
         }
+        .switch {
+            margin: 20px;
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        input:checked + .slider {
+            background-color: #696969;
+        }
+        input:focus + .slider {
+            border-radius: 34px;
+        }
+        input:checked + .slider:before {
+            -webkit-transform:  translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
         .board {
             width: 100vw;
-            height: 100vh;
+            height: 75vh;
             display: grid;
             justify-content: center;
             align-content: center;
@@ -32,13 +84,19 @@
             cursor: pointer;
             color: black;
         }
-        .tie {
+/*        .tie {
             width: 100px;
             height: 100px;
-        }
+        }*/
     </style>
 </head>
 <body>
+    <div>
+    <label class="switch">
+    <input type="checkbox" onclick="backgroundColor()" id="switchBox"></input>
+    <span class="slider round"></span>
+    </label>
+    </div>
     <div class="board" id="board">
         <button onclick="square0()" class="button" id="0"></button>
         <button onclick="square1()" class="button" id="1"></button>
@@ -54,35 +112,47 @@
         <h1></h1>
     </div>
     <script>
-
         // Varibles at the top
-        var playingBoard = [["A","B","C"],
-                            ["D","E","F"],
-                            ["G","H","J"]];       
+        var playingBoard = [[,,],
+                            [,,],
+                            [,,]];
+        var winningConditon = [[0,1,2],
+                            [3,4,5],
+                            [6,7,8],
+                            [0,3,6],
+                            [1,4,7],
+                            [2,5,8],
+                            [0,4,8],
+                            [2,4,6]]       
         var swap = ["X"];
         var board = [];
+        var row = 0;
+        var col = 0; 
+        var background = ["x"];
+        // var tie = document.getElementById("tie");
         // Checking the varibles
         console.log(swap);
         console.log(board);
         console.log(playingBoard);
+        // console.log(tie);
         // Functions starting with the players
         function playerX() {
             // Here we assign the first index in the array "swap" to "X"
             swap[0] = "X";
-            console.log(swap);
+            // console.log(swap);
             // We also want to add our input to the "board" array. The "board" array is going to check 
             // if the script is not runing forever. 
             board.push("X");
-            console.log(board);
+            // console.log(board);
         }
 
         function playerCircle() {
             // Here we assign the first index in the array "swap" to "O"
             swap[0] = "O";
-            console.log(swap);
+            // console.log(swap);
             // Adding "O" to the "board" array
             board.push("O");
-            console.log(board);
+            // console.log(board);
         }
 
         // Functions that makes the game playable
@@ -99,19 +169,30 @@
 
             }
         }
+        function backgroundColor() {
+            var box = document.getElementById("switchBox").checked;
+            if (background == "x") {
+            document.body.style.backgroundColor = "DarkGrey";
+            console.log("This is working");
+            background[0] = "o";
+        }
+        else {
+            document.body.style.backgroundColor = "White";
+            background[0] = "x";
+            }
+        }
 
-        var tie = document.getElementById("tie");
-        console.log(tie);
+        var index = playingBoard[row][col];
 
+        function checkWinner() {
 
-        // function winner() {
-        //     if (board.length == 2) {
-        //         var tie = document.getElementById("tie");
-        //         console.log(tie);
-        //         tie.innerText("Tie");
-        //         document.write(tie);
-        //     }
-        // }
+            if (playingBoard[index].includes("X" || "O")) {
+                console.log("This is the part where the function checks the rows and cols for a winner");
+            }
+            if (board.length == 9) {
+                console.log("In this part will the tie message be located");
+            }
+        }
 
 
 
@@ -137,7 +218,8 @@
         function placeMark() {
             if (board.length <= 8) {
                 swapTurn();
-                // winner();
+                checkWinner();
+                console.log(playingBoard);
             }
             else {
                 console.log("endGame");
@@ -151,12 +233,14 @@
             var button = document.getElementById("0");
             button.innerText = swap[0];
             button.disabled = true;
+            playingBoard[0][0] = swap[0];
             placeMark();
         }
         function square1() {
             var button = document.getElementById("1");
             button.innerText = swap[0];
             button.disabled = true;
+            playingBoard[0][1] = swap[0];
             placeMark();
 
         }
@@ -164,6 +248,7 @@
             var button = document.getElementById("2");
             button.innerText = swap[0];
             button.disabled = true;
+            playingBoard[0][2] = swap[0];
             placeMark();
 
         }
@@ -171,6 +256,7 @@
             var button = document.getElementById("3");
             button.innerText = swap[0];
             button.disabled = true;
+            playingBoard[1][0] = swap[0];
             placeMark();
         }
 
@@ -178,6 +264,7 @@
             var button = document.getElementById("4");
             button.innerText = swap[0];
             button.disabled = true;
+            playingBoard[1][1] = swap[0];
             placeMark();
         }
 
@@ -185,6 +272,7 @@
             var button = document.getElementById("5");
             button.innerText = swap[0];
             button.disabled = true;
+            playingBoard[1][2] = swap[0];
             placeMark();
         }
 
@@ -192,6 +280,7 @@
             var button = document.getElementById("6");
             button.innerText = swap[0];
             button.disabled = true;
+            playingBoard[2][0] = swap[0];
             placeMark();
         }
 
@@ -199,6 +288,7 @@
             var button = document.getElementById("7");
             button.innerText = swap[0];
             button.disabled = true;
+            playingBoard[2][1] = swap[0];
             placeMark();
         }
 
@@ -206,6 +296,7 @@
             var button = document.getElementById("8");
             button.innerText = swap[0];
             button.disabled = true;
+            playingBoard[2][2] = swap[0];
             placeMark();
         }
 
@@ -220,3 +311,25 @@
 <!-- Problems -->
 <!-- Need to update the playingBoard array that is a nested array. If I can update it properly then I will be able to  -->
 <!-- check for winner and tie -->
+<!-- Ideas -->
+<!-- var playerX = prompt("Enter player 1 name here:"); -->
+<!-- var playerO = prompt("Enter player 2 name here:"); -->
+<!-- Then use the player names as "marks" -->
+<!--         function playerX() {
+            // Here we assign the first index in the array "swap" to "X"
+            swap[0] = playerX;
+            console.log(swap);
+            // We also want to add our input to the "board" array. The "board" array is going to check 
+            // if the script is not runing forever. 
+            board.push("X");
+            console.log(board);
+        }
+
+        function playerCircle() {
+            // Here we assign the first index in the array "swap" to "O"
+            swap[0] = playerO;
+            console.log(swap);
+            // Adding "O" to the "board" array
+            board.push("O");
+            console.log(board);
+        } -->
