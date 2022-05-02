@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>tic-tac-toe</title>
     <style>
+        :root {
+            --cell-size: 100px;
+            --mark-size: calc(var(--cell-size) * .9);
+        }
+
         body {
             margin: 0;
         }
@@ -72,9 +77,9 @@
             grid-template-columns: repeat(3, auto);
         }
         .button {
-            width: 100px;
-            height: 100px;
-            font-size: 750%;
+            width: var(--cell-size);
+            height: var(--cell-size);
+            font-size: var(--mark-size);
             background: grey;
             border: 2px solid black;
             display: flex;
@@ -135,24 +140,35 @@
         console.log(board);
         console.log(playingBoard);
         // console.log(tie);
+        // Loop for the playingboard
+
+        for (var row = 0; row < 3; row++) {
+            for (var col = 0; col < 3; col++) {
+                console.log("Row:" + row + " " + "Col:" + col);
+            }
+        }
+
+
+
+
         // Functions starting with the players
         function playerX() {
             // Here we assign the first index in the array "swap" to "X"
             swap[0] = "X";
-            // console.log(swap);
+            console.log(swap);
             // We also want to add our input to the "board" array. The "board" array is going to check 
             // if the script is not runing forever. 
             board.push("X");
-            // console.log(board);
+            console.log(board);
         }
 
         function playerCircle() {
             // Here we assign the first index in the array "swap" to "O"
             swap[0] = "O";
-            // console.log(swap);
+            console.log(swap);
             // Adding "O" to the "board" array
             board.push("O");
-            // console.log(board);
+            console.log(board);
         }
 
         // Functions that makes the game playable
@@ -182,7 +198,7 @@
             }
         }
 
-        var index = playingBoard[row][col];
+        // var index = playingBoard[row][col];
 
         function checkWinner() {
 
