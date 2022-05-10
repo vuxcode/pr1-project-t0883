@@ -202,8 +202,6 @@
             // Add restart function here!
         }
 
-
-
         var playingBoard = [[,,],
                             [,,],
                             [,,]]; 
@@ -228,12 +226,9 @@
 
         restart.addEventListener("click", start);
 
-
         function start() {
             location.reload();
         }
-
-
         // Functions starting with the players
         function playerX() {
             // Here we assign the first index in the array "swap" to "X"
@@ -244,7 +239,6 @@
             board.push("X");
             // console.log(board);
         }
-
         function playerCircle() {
             // Here we assign the first index in the array "swap" to "O"
             swap[0] = player2Index;
@@ -253,7 +247,6 @@
             board.push("O");
             // console.log(board);
         }
-
         // Functions that makes the game playable
         function swapTurn() {
             // Here we want to check if the index of the "swap" array is equal to "X". If it is it will place a "0"
@@ -268,7 +261,6 @@
 
             }
         }
-
         function placeMark() {
             if (board.length <= 8) {
                 swapTurn();
@@ -278,7 +270,6 @@
                 tie();
             }
         }
-
         function checkWin() {
             if (playingBoard[0][0] == player1Index) {
                 if (playingBoard[0][1] == player1Index) {
@@ -425,12 +416,10 @@
                 }
             }
         }
-
         function tie() {
             popUpMessage.classList.add("show");
             message.innerText = "Tie! Noone is the winner!";
         }
-
         // These is the buttons. Starting with 0 since arrays index starts at 0. 
         function square0() {
             var button = document.getElementById("0");
@@ -462,7 +451,6 @@
             playingBoard[1][0] = swap[0];
             placeMark();
         }
-
         function square4() {
             var button = document.getElementById("4");
             button.innerText = swap[0];
@@ -470,7 +458,6 @@
             playingBoard[1][1] = swap[0];
             placeMark();
         }
-
         function square5() {
             var button = document.getElementById("5");
             button.innerText = swap[0];
@@ -478,7 +465,6 @@
             playingBoard[1][2] = swap[0];
             placeMark();
         }
-
         function square6() {
             var button = document.getElementById("6");
             button.innerText = swap[0];
@@ -486,7 +472,6 @@
             playingBoard[2][0] = swap[0];
             placeMark();
         }
-
         function square7() {
             var button = document.getElementById("7");
             button.innerText = swap[0];
@@ -494,7 +479,6 @@
             playingBoard[2][1] = swap[0];
             placeMark();
         }
-
         function square8() {
             var button = document.getElementById("8");
             button.innerText = swap[0];
