@@ -101,6 +101,7 @@
     <input type="checkbox" onclick="backgroundColor()" id="switchBox"></input>
     <span class="slider round"></span>
     </label>
+    <h1>Darkmode switch</h1>
     </div>
     <div class="board" id="board">
         <button onclick="square0()" class="button" id="0"></button>
@@ -141,6 +142,10 @@
             var player1Index = "X";
         }
         if (player2Index == " ") {
+            var player2Index = "O";
+        }
+        if (player1Index === player2Index) {
+            var player1Index = "X";
             var player2Index = "O";
         }
         if (player1 === player2) {
@@ -199,17 +204,17 @@
 
             }
         }
-        function backgroundColor() {
-            var box = document.getElementById("switchBox").checked;
-            if (background == "x") {
-            document.body.style.backgroundColor = "DarkGrey";
-            background[0] = "o";
-        }
-        else {
-            document.body.style.backgroundColor = "White";
-            background[0] = "x";
-            }
-        }
+        // function backgroundColor() {
+        //     var box = document.getElementById("switchBox").checked;
+        //     if (background == "x") {
+        //     document.body.style.backgroundColor = "DarkGrey";
+        //     background[0] = "o";
+        // }
+        // else {
+        //     document.body.style.backgroundColor = "White";
+        //     background[0] = "x";
+        //     }
+        // }
 
         function placeMark() {
             if (board.length <= 8) {
@@ -408,6 +413,18 @@
             playingBoard[2][2] = swap[0];
             placeMark();
         }
+        function backgroundColor() {
+            var box = document.getElementById("switchBox").checked;
+            if (background == "x") {
+                document.body.style.backgroundColor = "DarkGrey";
+                background[0] = "o";
+            }
+            else {
+                document.body.style.backgroundColor = "White";
+                background[0] = "x";
+                }
+            }
+
     </script>
 </body>
 </html>
