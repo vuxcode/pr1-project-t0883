@@ -118,10 +118,14 @@
     </div>
     <script>
         // Varibles at the top
+        var player1 = prompt("Enter player 1 name here:");
+        var player2 = prompt("Enter player 2 name here:");
         var playingBoard = [[,,],
                             [,,],
-                            [,,]];     
-        var swap = ["X"];
+                            [,,]];
+        var player1Index = player1[0];
+        var player2Index = player2[0];    
+        var swap = [player1Index];
         var board = [];
         var row = 0;
         var col = 0; 
@@ -130,6 +134,8 @@
         // player2
         // var tie = document.getElementById("tie");
         // Checking the varibles
+        console.log(player1Index);
+        console.log(player2Index);
         console.log(swap);
         console.log(board);
         console.log(playingBoard);
@@ -141,7 +147,7 @@
         // Functions starting with the players
         function playerX() {
             // Here we assign the first index in the array "swap" to "X"
-            swap[0] = "X";
+            swap[0] = player1Index;
             console.log(swap);
             // We also want to add our input to the "board" array. The "board" array is going to check 
             // if the script is not runing forever. 
@@ -151,7 +157,7 @@
 
         function playerCircle() {
             // Here we assign the first index in the array "swap" to "O"
-            swap[0] = "O";
+            swap[0] = player2Index;
             console.log(swap);
             // Adding "O" to the "board" array
             board.push("O");
@@ -161,7 +167,7 @@
         // Functions that makes the game playable
         function swapTurn() {
             // Here we want to check if the index of the "swap" array is equal to "X". If it is it will place a "0"
-            if (swap == "X") {
+            if (swap == player1Index) {
                 console.log("The first part is working now");
                 playerCircle();
             }
@@ -196,114 +202,114 @@
         }
 
         function checkWin() {
-            if (playingBoard[0][0] == "X") {
-                if (playingBoard[0][1] == "X") {
-                    if (playingBoard[0][2] == "X") {
+            if (playingBoard[0][0] == player1Index) {
+                if (playingBoard[0][1] == player1Index) {
+                    if (playingBoard[0][2] == player1Index) {
                         console.log("X is the winner");
                     }
                 }
             }
-            if (playingBoard[1][0] == "X") {
-                if (playingBoard[1][1] == "X") {
-                    if (playingBoard[1][2] == "X") {
+            if (playingBoard[1][0] == player1Index) {
+                if (playingBoard[1][1] == player1Index) {
+                    if (playingBoard[1][2] == player1Index) {
                         console.log("X is the winner");
                     }
                 }
             }
-            if (playingBoard[2][0] == "X") {
-                if (playingBoard[2][1] == "X") {
-                    if (playingBoard[2][2] == "X") {
+            if (playingBoard[2][0] == player1Index) {
+                if (playingBoard[2][1] == player1Index) {
+                    if (playingBoard[2][2] == player1Index) {
                         console.log("X is the winner");
                     }
                 }
             }
-            if (playingBoard[0][0] == "X") {
-                if (playingBoard[1][0] == "X") {
-                    if (playingBoard[2][0] == "X") {
+            if (playingBoard[0][0] == player1Index) {
+                if (playingBoard[1][0] == player1Index) {
+                    if (playingBoard[2][0] == player1Index) {
                         console.log("X is the winner");
                     }
                 }
             }
-            if (playingBoard[0][1] == "X") {
-                if (playingBoard[1][1] == "X") {
-                    if (playingBoard[2][1] == "X") {
+            if (playingBoard[0][1] == player1Index) {
+                if (playingBoard[1][1] == player1Index) {
+                    if (playingBoard[2][1] == player1Index) {
                         console.log("X is the winner");
                     }
                 }
             }
-            if (playingBoard[0][2] == "X") {
-                if (playingBoard[1][2] == "X") {
-                    if (playingBoard[2][2] == "X") {
+            if (playingBoard[0][2] == player1Index) {
+                if (playingBoard[1][2] == player1Index) {
+                    if (playingBoard[2][2] == player1Index) {
                         console.log("X is the winner");
                     }
                 }
             }
-            if (playingBoard[0][0] == "X") {
-                if (playingBoard[1][1] == "X") {
-                    if (playingBoard[2][2] == "X") {
+            if (playingBoard[0][0] == player1Index) {
+                if (playingBoard[1][1] == player1Index) {
+                    if (playingBoard[2][2] == player1Index) {
                         console.log("X is the winner");
                     }
                 }
             }
-            if (playingBoard[0][2] == "X") {
-                if (playingBoard[1][1] == "X") {
-                    if (playingBoard[2][0] == "X") {
+            if (playingBoard[0][2] == player1Index) {
+                if (playingBoard[1][1] == player1Index) {
+                    if (playingBoard[2][0] == player1Index) {
                         console.log("X is the winner");
                     }
                 }
             }
-            if (playingBoard[0][0] == "O") {
-                if (playingBoard[0][1] == "O") {
-                    if (playingBoard[0][2] == "O") {
+            if (playingBoard[0][0] == player2Index) {
+                if (playingBoard[0][1] == player2Index) {
+                    if (playingBoard[0][2] == player2Index) {
                         console.log("O is the winner");
                     }
                 }
             }
-            if (playingBoard[1][0] == "O") {
-                if (playingBoard[1][1] == "O") {
-                    if (playingBoard[1][2] == "O") {
+            if (playingBoard[1][0] == player2Index) {
+                if (playingBoard[1][1] == player2Index) {
+                    if (playingBoard[1][2] == player2Index) {
                         console.log("O is the winner");
                     }
                 }
             }
-            if (playingBoard[2][0] == "O") {
-                if (playingBoard[2][1] == "O") {
-                    if (playingBoard[2][2] == "O") {
+            if (playingBoard[2][0] == player2Index) {
+                if (playingBoard[2][1] == player2Index) {
+                    if (playingBoard[2][2] == player2Index) {
                         console.log("O is the winner");
                     }
                 }
             }
-            if (playingBoard[0][0] == "O") {
-                if (playingBoard[1][0] == "O") {
-                    if (playingBoard[2][0] == "O") {
+            if (playingBoard[0][0] == player2Index) {
+                if (playingBoard[1][0] == player2Index) {
+                    if (playingBoard[2][0] == player2Index) {
                         console.log("O is the winner");
                     }
                 }
             }
-            if (playingBoard[0][1] == "O") {
-                if (playingBoard[1][1] == "O") {
-                    if (playingBoard[2][1] == "O") {
+            if (playingBoard[0][1] == player2Index) {
+                if (playingBoard[1][1] == player2Index) {
+                    if (playingBoard[2][1] == player2Index) {
                         console.log("O is the winner");
                     }
                 }
             }
-            if (playingBoard[0][2] == "O") {
-                if (playingBoard[1][2] == "O") {
-                    if (playingBoard[2][2] == "O") {
+            if (playingBoard[0][2] == player2Index) {
+                if (playingBoard[1][2] == player2Index) {
+                    if (playingBoard[2][2] == player2Index) {
                         console.log("O is the winner");
                     }
                 }
             }
-            if (playingBoard[0][0] == "O") {
-                if (playingBoard[1][1] == "O") {
-                    if (playingBoard[2][2] == "O") {
+            if (playingBoard[0][0] == player2Index) {
+                if (playingBoard[1][1] == player2Index) {
+                    if (playingBoard[2][2] == player2Index) {
                         console.log("O is the winner");
                     }
                 }
             }
-            if (playingBoard[0][2] == "O") {
-                if (playingBoard[1][1] == "O") {
-                    if (playingBoard[2][0] == "O") {
+            if (playingBoard[0][2] == player2Index) {
+                if (playingBoard[1][1] == player2Index) {
+                    if (playingBoard[2][0] == player2Index) {
                         console.log("O is the winner");
                     }
                 }
