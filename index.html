@@ -273,10 +273,9 @@
             if (board.length <= 8) {
                 swapTurn();
                 checkWin();
-                console.log(playingBoard);
             }
-            else {
-                console.log("endGame");
+            if (board.length >= 9) {
+                tie();
             }
         }
 
@@ -285,7 +284,7 @@
                 if (playingBoard[0][1] == player1Index) {
                     if (playingBoard[0][2] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player1 + " is the winner";
                     }
                 }
@@ -294,7 +293,7 @@
                 if (playingBoard[1][1] == player1Index) {
                     if (playingBoard[1][2] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player1 + " is the winner";
                     }
                 }
@@ -303,7 +302,7 @@
                 if (playingBoard[2][1] == player1Index) {
                     if (playingBoard[2][2] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player1 + " is the winner";
                     }
                 }
@@ -312,7 +311,7 @@
                 if (playingBoard[1][0] == player1Index) {
                     if (playingBoard[2][0] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player1 + " is the winner";
                     }
                 }
@@ -321,7 +320,7 @@
                 if (playingBoard[1][1] == player1Index) {
                     if (playingBoard[2][1] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player1 + " is the winner";
                     }
                 }
@@ -330,7 +329,7 @@
                 if (playingBoard[1][2] == player1Index) {
                     if (playingBoard[2][2] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player1 + " is the winner";
                     }
                 }
@@ -339,7 +338,7 @@
                 if (playingBoard[1][1] == player1Index) {
                     if (playingBoard[2][2] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player1 + " is the winner";
                     }
                 }
@@ -348,7 +347,7 @@
                 if (playingBoard[1][1] == player1Index) {
                     if (playingBoard[2][0] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player1 + " is the winner";
                     }
                 }
@@ -357,7 +356,7 @@
                 if (playingBoard[0][1] == player2Index) {
                     if (playingBoard[0][2] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player2 + " is the winner";
                     }
                 }
@@ -366,7 +365,7 @@
                 if (playingBoard[1][1] == player2Index) {
                     if (playingBoard[1][2] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player2 + " is the winner";
                     }
                 }
@@ -375,7 +374,7 @@
                 if (playingBoard[2][1] == player2Index) {
                     if (playingBoard[2][2] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player2 + " is the winner";
                     }
                 }
@@ -384,7 +383,7 @@
                 if (playingBoard[1][0] == player2Index) {
                     if (playingBoard[2][0] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player2 + " is the winner";
                     }
                 }
@@ -393,7 +392,7 @@
                 if (playingBoard[1][1] == player2Index) {
                     if (playingBoard[2][1] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player2 + " is the winner";
                     }
                 }
@@ -402,7 +401,7 @@
                 if (playingBoard[1][2] == player2Index) {
                     if (playingBoard[2][2] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player2 + " is the winner";
                     }
                 }
@@ -411,7 +410,7 @@
                 if (playingBoard[1][1] == player2Index) {
                     if (playingBoard[2][2] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player2 + " is the winner";
                     }
                 }
@@ -420,11 +419,16 @@
                 if (playingBoard[1][1] == player2Index) {
                     if (playingBoard[2][0] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show")
+                        popUpMessage.classList.add("show");
                         message.innerText = player2 + " is the winner";
                     }
                 }
             }
+        }
+
+        function tie() {
+            popUpMessage.classList.add("show");
+            message.innerText = "Tie! Noone is the winner!";
         }
 
         // These is the buttons. Starting with 0 since arrays index starts at 0. 
@@ -519,7 +523,6 @@
 </html>
 
 <!-- Notes -->
-<!-- Tie message is the last thing to add now -->
 <!-- Maybe add a scoreboard for the players to keep track of the score -->
 <!-- Problems -->
-<!-- None -->
+<!-- Tie message pops up if someone wins on the last move -->
