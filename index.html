@@ -120,20 +120,14 @@
         // Varibles at the top
         var playingBoard = [[,,],
                             [,,],
-                            [,,]];
-        var winningConditon = [[0,1,2],
-                            [3,4,5],
-                            [6,7,8],
-                            [0,3,6],
-                            [1,4,7],
-                            [2,5,8],
-                            [0,4,8],
-                            [2,4,6]]       
+                            [,,]];     
         var swap = ["X"];
         var board = [];
         var row = 0;
         var col = 0; 
         var background = ["x"];
+        // player1
+        // player2
         // var tie = document.getElementById("tie");
         // Checking the varibles
         console.log(swap);
@@ -141,13 +135,6 @@
         console.log(playingBoard);
         // console.log(tie);
         // Loop for the playingboard
-
-        for (var row = 0; row < 3; row++) {
-            for (var col = 0; col < 3; col++) {
-                console.log("Row:" + row + " " + "Col:" + col);
-            }
-        }
-
 
 
 
@@ -189,7 +176,6 @@
             var box = document.getElementById("switchBox").checked;
             if (background == "x") {
             document.body.style.backgroundColor = "DarkGrey";
-            console.log("This is working");
             background[0] = "o";
         }
         else {
@@ -198,43 +184,10 @@
             }
         }
 
-        // var index = playingBoard[row][col];
-
-        function checkWinner() {
-
-            if (playingBoard[index].includes("X" || "O")) {
-                console.log("This is the part where the function checks the rows and cols for a winner");
-            }
-            if (board.length == 9) {
-                console.log("In this part will the tie message be located");
-            }
-        }
-
-
-
-        // function endGame() {
-        //     // This function is going to be the endgame screen. This function needs to check and also 
-        //     // show if someone is a winner or if its a tie.
-        //     // I also need to make a winning message that is going to pop up when someone is a winner 
-        //     // but also a tie message.
-        //     if (player x condition here) {
-        //         console.log("Player X is the winner");
-        //     }
-        //     else if (player os condition here) {
-        //         console.log("Player O is the winner");
-        //     }
-        //     else if (tie condtion here) {
-        //         console.log("tie");
-        //     }
-        //     else {
-        //         console.log("keep running the game");
-        //     }
-        // }
-        
         function placeMark() {
             if (board.length <= 8) {
                 swapTurn();
-                checkWinner();
+                checkWin();
                 console.log(playingBoard);
             }
             else {
@@ -242,7 +195,120 @@
             }
         }
 
-
+        function checkWin() {
+            if (playingBoard[0][0] == "X") {
+                if (playingBoard[0][1] == "X") {
+                    if (playingBoard[0][2] == "X") {
+                        console.log("X is the winner");
+                    }
+                }
+            }
+            if (playingBoard[1][0] == "X") {
+                if (playingBoard[1][1] == "X") {
+                    if (playingBoard[1][2] == "X") {
+                        console.log("X is the winner");
+                    }
+                }
+            }
+            if (playingBoard[2][0] == "X") {
+                if (playingBoard[2][1] == "X") {
+                    if (playingBoard[2][2] == "X") {
+                        console.log("X is the winner");
+                    }
+                }
+            }
+            if (playingBoard[0][0] == "X") {
+                if (playingBoard[1][0] == "X") {
+                    if (playingBoard[2][0] == "X") {
+                        console.log("X is the winner");
+                    }
+                }
+            }
+            if (playingBoard[0][1] == "X") {
+                if (playingBoard[1][1] == "X") {
+                    if (playingBoard[2][1] == "X") {
+                        console.log("X is the winner");
+                    }
+                }
+            }
+            if (playingBoard[0][2] == "X") {
+                if (playingBoard[1][2] == "X") {
+                    if (playingBoard[2][2] == "X") {
+                        console.log("X is the winner");
+                    }
+                }
+            }
+            if (playingBoard[0][0] == "X") {
+                if (playingBoard[1][1] == "X") {
+                    if (playingBoard[2][2] == "X") {
+                        console.log("X is the winner");
+                    }
+                }
+            }
+            if (playingBoard[0][2] == "X") {
+                if (playingBoard[1][1] == "X") {
+                    if (playingBoard[2][0] == "X") {
+                        console.log("X is the winner");
+                    }
+                }
+            }
+            if (playingBoard[0][0] == "O") {
+                if (playingBoard[0][1] == "O") {
+                    if (playingBoard[0][2] == "O") {
+                        console.log("O is the winner");
+                    }
+                }
+            }
+            if (playingBoard[1][0] == "O") {
+                if (playingBoard[1][1] == "O") {
+                    if (playingBoard[1][2] == "O") {
+                        console.log("O is the winner");
+                    }
+                }
+            }
+            if (playingBoard[2][0] == "O") {
+                if (playingBoard[2][1] == "O") {
+                    if (playingBoard[2][2] == "O") {
+                        console.log("O is the winner");
+                    }
+                }
+            }
+            if (playingBoard[0][0] == "O") {
+                if (playingBoard[1][0] == "O") {
+                    if (playingBoard[2][0] == "O") {
+                        console.log("O is the winner");
+                    }
+                }
+            }
+            if (playingBoard[0][1] == "O") {
+                if (playingBoard[1][1] == "O") {
+                    if (playingBoard[2][1] == "O") {
+                        console.log("O is the winner");
+                    }
+                }
+            }
+            if (playingBoard[0][2] == "O") {
+                if (playingBoard[1][2] == "O") {
+                    if (playingBoard[2][2] == "O") {
+                        console.log("O is the winner");
+                    }
+                }
+            }
+            if (playingBoard[0][0] == "O") {
+                if (playingBoard[1][1] == "O") {
+                    if (playingBoard[2][2] == "O") {
+                        console.log("O is the winner");
+                    }
+                }
+            }
+            if (playingBoard[0][2] == "O") {
+                if (playingBoard[1][1] == "O") {
+                    if (playingBoard[2][0] == "O") {
+                        console.log("O is the winner");
+                    }
+                }
+            }
+        }
 
         // These is the buttons. Starting with 0 since arrays index starts at 0. 
         function square0() {
@@ -320,7 +386,6 @@
     </script>
 </body>
 </html>
-
 
 <!-- Notes -->
 <!-- Next step is to make a winning message pop up -->
