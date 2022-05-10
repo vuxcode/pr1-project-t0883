@@ -13,6 +13,15 @@
         body {
             margin: 0;
         }
+        h3 {
+            display: block;
+            font-size: 1.5em;
+            margin-top: 0em;
+            margin-bottom: 0.83em;
+            margin-left: 1em;
+            margin-right: 0;
+            font-weight: bold;    
+        }
         h4 {
             display: block;
             font-size: 1.5em;
@@ -119,6 +128,7 @@
             background-color: whitesmoke;
             border: 1px solid;
             padding: .25em .5em;
+            font-family: "Curier New", Curier, monospace;
             cursor: pointer;
         }
         .popUpMessage button:hover {
@@ -138,7 +148,7 @@
     <span class="slider round"></span>
     </label>
     </div>
-    <h4 id="h4">Dark mode</h4>
+    <h3 id="h3">Dark mode</h3>
     <h4 id="player1"></h4>
     <h4 id="player2"></h4>
     <div class="board" id="board">
@@ -493,13 +503,13 @@
             if (background == "x") {
                 document.body.style.backgroundColor = "DarkGrey";
                 background[0] = "o";
-                var switchText = document.getElementById("h4");
+                var switchText = document.getElementById("h3");
                 switchText.innerText = "Light mode";
             }
             else {
                 document.body.style.backgroundColor = "White";
                 background[0] = "x";
-                var switchText = document.getElementById("h4");
+                var switchText = document.getElementById("h3");
                 switchText.innerText = "Dark mode";
             }
         }
@@ -509,7 +519,7 @@
 </html>
 
 <!-- Notes -->
-<!-- Next step is to make a winning message pop up -->
+<!-- Tie message is the last thing to add now -->
 <!-- Maybe add a scoreboard for the players to keep track of the score -->
 <!-- Problems -->
 <!-- None -->
