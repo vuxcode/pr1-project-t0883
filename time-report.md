@@ -36,3 +36,5 @@
   just so the program cant be broken down. Im very happy with the outcome of this project and I think this is the way to make a 
   tic-tac-toe in javascript. It has the option to be customized by the user and the cant be broken by weird or invalid inputs from the 
   users. Total time is now 25 hours.
+-2022-05-11
+  The program is now done. It runs as I want and expect. I have about 1 or 2 hours left on the clock until I reach 30 hours. 
