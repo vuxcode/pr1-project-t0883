@@ -155,15 +155,15 @@
     <h4 id="player1"></h4>
     <h4 id="player2"></h4>
     <div class="board" id="board">
-        <button onclick="square0()" class="button" id="0"></button>
-        <button onclick="square1()" class="button" id="1"></button>
-        <button onclick="square2()" class="button" id="2"></button>
-        <button onclick="square3()" class="button" id="3"></button>
-        <button onclick="square4()" class="button" id="4"></button>
-        <button onclick="square5()" class="button" id="5"></button>
-        <button onclick="square6()" class="button" id="6"></button>
-        <button onclick="square7()" class="button" id="7"></button>
-        <button onclick="square8()" class="button" id="8"></button>
+        <button onclick="square(0)" class="button" id="0"></button>
+        <button onclick="square(1)" class="button" id="1"></button>
+        <button onclick="square(2)" class="button" id="2"></button>
+        <button onclick="square(3)" class="button" id="3"></button>
+        <button onclick="square(4)" class="button" id="4"></button>
+        <button onclick="square(5)" class="button" id="5"></button>
+        <button onclick="square(6)" class="button" id="6"></button>
+        <button onclick="square(7)" class="button" id="7"></button>
+        <button onclick="square(8)" class="button" id="8"></button>
     </div>
     <div class="popUpMessage" id="popUpMessage">
         <div id="message"></div>
@@ -204,7 +204,6 @@
             alert("The players have the same username!");
             var player2 = "O";
             var player2Index = "O";
-            // Add restart function here!
         }
 
         var playingBoard = [[,,],
@@ -425,73 +424,18 @@
                 }
             }
         }
+ 
+        function square(number) {
+            var button = document.getElementById(number);
+            button.innerText = swap[0];
+            button.disabled = true;
+            playingBoard[number] = swap[0];
+            console.log(number);
+            console.log(playingBoard);
+            placeMark();
+            checkWin();
+        } 
 
-        // These is the buttons. Starting with 0 since arrays index starts at 0. 
-        function square0() {
-            var button = document.getElementById("0");
-            button.innerText = swap[0];
-            button.disabled = true;
-            playingBoard[0][0] = swap[0];
-            placeMark();
-        }
-        function square1() {
-            var button = document.getElementById("1");
-            button.innerText = swap[0];
-            button.disabled = true;
-            playingBoard[0][1] = swap[0];
-            placeMark();
-
-        }
-        function square2() {
-            var button = document.getElementById("2");
-            button.innerText = swap[0];
-            button.disabled = true;
-            playingBoard[0][2] = swap[0];
-            placeMark();
-
-        }
-        function square3() {
-            var button = document.getElementById("3");
-            button.innerText = swap[0];
-            button.disabled = true;
-            playingBoard[1][0] = swap[0];
-            placeMark();
-        }
-        function square4() {
-            var button = document.getElementById("4");
-            button.innerText = swap[0];
-            button.disabled = true;
-            playingBoard[1][1] = swap[0];
-            placeMark();
-        }
-        function square5() {
-            var button = document.getElementById("5");
-            button.innerText = swap[0];
-            button.disabled = true;
-            playingBoard[1][2] = swap[0];
-            placeMark();
-        }
-        function square6() {
-            var button = document.getElementById("6");
-            button.innerText = swap[0];
-            button.disabled = true;
-            playingBoard[2][0] = swap[0];
-            placeMark();
-        }
-        function square7() {
-            var button = document.getElementById("7");
-            button.innerText = swap[0];
-            button.disabled = true;
-            playingBoard[2][1] = swap[0];
-            placeMark();
-        }
-        function square8() {
-            var button = document.getElementById("8");
-            button.innerText = swap[0];
-            button.disabled = true;
-            playingBoard[2][2] = swap[0];
-            placeMark();
-        }
         function backgroundColor() {
             var box = document.getElementById("switchBox").checked;
             if (background == "x") {
@@ -511,8 +455,3 @@
     </script>
 </body>
 </html>
-
-<!-- Notes -->
-<!-- Maybe add a scoreboard for the players to keep track of the score -->
-<!-- Problems -->
-<!-- Tie message pops up if someone wins on the last move -->
