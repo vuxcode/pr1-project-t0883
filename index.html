@@ -117,7 +117,7 @@
             background-color: grey;
             justify-content: center;
             align-items: center;
-            color: whitesmoke;
+            color: white;
             font-size: 5rem;
             font-family: "Curier New", Curier, monospace;
             flex-direction: column;
@@ -125,16 +125,19 @@
         .popUpMessage button {
             border-radius: 10px;
             font-size: 3rem;
-            background-color: whitesmoke;
+            background-color: white;
             border: 1px solid;
             padding: .25em .5em;
             font-family: "Curier New", Curier, monospace;
             cursor: pointer;
+            opacity: 0.6;
+            transition: 0.3s;
         }
         .popUpMessage button:hover {
             background-color: whitesmoke;
             color: black;
             border-color: whitesmoke;
+            opacity: 1;
         }
         .popUpMessage.show {
             display: flex;
@@ -207,6 +210,7 @@
                             [,,]]; 
         var swap = [player1Index];
         var board = [];
+        var winningArray = [];
         var background = ["x"];
         var popUpMessage = document.getElementById("popUpMessage");
         var restart = document.getElementById("restart");
@@ -237,7 +241,7 @@
             // We also want to add our input to the "board" array. The "board" array is going to check 
             // if the script is not runing forever. 
             board.push("X");
-            // console.log(board);
+            console.log(board);
         }
         function playerCircle() {
             // Here we assign the first index in the array "swap" to "O"
@@ -245,7 +249,7 @@
             // console.log(swap);
             // Adding "O" to the "board" array
             board.push("O");
-            // console.log(board);
+            console.log(board);
         }
         // Functions that makes the game playable
         function swapTurn() {
@@ -261,22 +265,40 @@
 
             }
         }
-        function placeMark() {
-            if (board.length <= 8) {
-                swapTurn();
-                checkWin();
+
+        function checkWinningArray() {
+            if (winningArray == "X") {
+                popUpMessage.classList.add("show");
+                message.innerText = player1 + " is the winner";
+                console.log("X in the winningArray");
             }
-            if (board.length >= 9) {
+            if (winningArray == "O") {
+                popUpMessage.classList.add("show");
+                message.innerText = player2 + " is the winner";
+                console.log("O in the winningArray");
+            }
+            if (winningArray == "" && board.length >= 9) {
                 tie();
             }
         }
+
+        function tie() {    
+            popUpMessage.classList.add("show");
+            message.innerText = "Tie! Noone is the winner!";
+        }
+
+        function placeMark() {
+            checkWin();
+            swapTurn();
+            checkWinningArray();
+        }
+
         function checkWin() {
             if (playingBoard[0][0] == player1Index) {
                 if (playingBoard[0][1] == player1Index) {
                     if (playingBoard[0][2] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player1 + " is the winner";
+                        winningArray.push("X");
                     }
                 }
             }
@@ -284,8 +306,7 @@
                 if (playingBoard[1][1] == player1Index) {
                     if (playingBoard[1][2] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player1 + " is the winner";
+                        winningArray.push("X");
                     }
                 }
             }
@@ -293,8 +314,7 @@
                 if (playingBoard[2][1] == player1Index) {
                     if (playingBoard[2][2] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player1 + " is the winner";
+                        winningArray.push("X");
                     }
                 }
             }
@@ -302,8 +322,7 @@
                 if (playingBoard[1][0] == player1Index) {
                     if (playingBoard[2][0] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player1 + " is the winner";
+                        winningArray.push("X");
                     }
                 }
             }
@@ -311,8 +330,7 @@
                 if (playingBoard[1][1] == player1Index) {
                     if (playingBoard[2][1] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player1 + " is the winner";
+                        winningArray.push("X");
                     }
                 }
             }
@@ -320,8 +338,7 @@
                 if (playingBoard[1][2] == player1Index) {
                     if (playingBoard[2][2] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player1 + " is the winner";
+                        winningArray.push("X");
                     }
                 }
             }
@@ -329,8 +346,7 @@
                 if (playingBoard[1][1] == player1Index) {
                     if (playingBoard[2][2] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player1 + " is the winner";
+                        winningArray.push("X");
                     }
                 }
             }
@@ -338,8 +354,7 @@
                 if (playingBoard[1][1] == player1Index) {
                     if (playingBoard[2][0] == player1Index) {
                         console.log(player1 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player1 + " is the winner";
+                        winningArray.push("X");
                     }
                 }
             }
@@ -347,8 +362,7 @@
                 if (playingBoard[0][1] == player2Index) {
                     if (playingBoard[0][2] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player2 + " is the winner";
+                        winningArray.push("O");
                     }
                 }
             }
@@ -356,8 +370,7 @@
                 if (playingBoard[1][1] == player2Index) {
                     if (playingBoard[1][2] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player2 + " is the winner";
+                        winningArray.push("O");
                     }
                 }
             }
@@ -365,8 +378,7 @@
                 if (playingBoard[2][1] == player2Index) {
                     if (playingBoard[2][2] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player2 + " is the winner";
+                        winningArray.push("O");
                     }
                 }
             }
@@ -374,8 +386,7 @@
                 if (playingBoard[1][0] == player2Index) {
                     if (playingBoard[2][0] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player2 + " is the winner";
+                        winningArray.push("O");
                     }
                 }
             }
@@ -383,8 +394,7 @@
                 if (playingBoard[1][1] == player2Index) {
                     if (playingBoard[2][1] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player2 + " is the winner";
+                        winningArray.push("O");
                     }
                 }
             }
@@ -392,8 +402,7 @@
                 if (playingBoard[1][2] == player2Index) {
                     if (playingBoard[2][2] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player2 + " is the winner";
+                        winningArray.push("O");
                     }
                 }
             }
@@ -401,8 +410,7 @@
                 if (playingBoard[1][1] == player2Index) {
                     if (playingBoard[2][2] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player2 + " is the winner";
+                        winningArray.push("O");
                     }
                 }
             }
@@ -410,16 +418,12 @@
                 if (playingBoard[1][1] == player2Index) {
                     if (playingBoard[2][0] == player2Index) {
                         console.log(player2 + " is the winner");
-                        popUpMessage.classList.add("show");
-                        message.innerText = player2 + " is the winner";
+                        winningArray.push("O");
                     }
                 }
             }
         }
-        function tie() {
-            popUpMessage.classList.add("show");
-            message.innerText = "Tie! Noone is the winner!";
-        }
+
         // These is the buttons. Starting with 0 since arrays index starts at 0. 
         function square0() {
             var button = document.getElementById("0");
