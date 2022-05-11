@@ -29,3 +29,10 @@
   Also started thinking about the winning message function and how I should check rows and cols. Had a great "review" session
   with Colin and it feels like im on the right path.
   Total time spent is now 19 hours. Time flies when you have fun! 
+-2022-05-10
+  Today I made huge progress on the project! Now you get a winning message and a tie message, the players also are able to choose a player name. 
+  If a player name is not choosen then the player get the standard x or o name and mark on the playingboard. I only need to fix the tie message
+  and when its fix I could say that the project is done. Its alot of lines of code and alot of the code is hardcorded to a value 
+  just so the program cant be broken down. Im very happy with the outcome of this project and I think this is the way to make a 
+  tic-tac-toe in javascript. It has the option to be customized by the user and the cant be broken by weird or invalid inputs from the 
+  users. Total time is now 25 hours.
