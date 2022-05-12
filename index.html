@@ -161,20 +161,20 @@
     <h4>Scoreboard</h4>
     <h4></h4>
     <div class="board" id="board">
-        <button onclick="square(0)" class="button" id="0"></button>
-        <button onclick="square(1)" class="button" id="1"></button>
-        <button onclick="square(2)" class="button" id="2"></button>
-        <button onclick="square(3)" class="button" id="3"></button>
-        <button onclick="square(4)" class="button" id="4"></button>
-        <button onclick="square(5)" class="button" id="5"></button>
-        <button onclick="square(6)" class="button" id="6"></button>
-        <button onclick="square(7)" class="button" id="7"></button>
-        <button onclick="square(8)" class="button" id="8"></button>
+        <button onclick="square(0)" class="button" id="0" ></button>
+        <button onclick="square(1)" class="button" id="1" ></button>
+        <button onclick="square(2)" class="button" id="2" ></button>
+        <button onclick="square(3)" class="button" id="3" ></button>
+        <button onclick="square(4)" class="button" id="4" ></button>
+        <button onclick="square(5)" class="button" id="5" ></button>
+        <button onclick="square(6)" class="button" id="6" ></button>
+        <button onclick="square(7)" class="button" id="7" ></button>
+        <button onclick="square(8)" class="button" id="8" ></button>
     </div>
     <div class="popUpMessage" id="popUpMessage">
         <div id="message"></div>
         <button id="restart">Restart with new players</button>
-        <button onclick="wipe()" id="restartSamePlayers">Restart with the same players</button>
+        <button onclick="hidePopUp()">Continue with the same players</button>
     </div>
     <script>
         // Varibles at the top. Also checking if a player name is choosen or not.
@@ -218,7 +218,6 @@
         var board = [];
         var winningArray = [];
         var background = ["x"];
-        var popUpMessage = document.getElementById("popUpMessage");
         var restart = document.getElementById("restart");
         var message = document.getElementById("message");
         var firstPlayer = document.getElementById("player1");
@@ -231,6 +230,12 @@
         var player1Win = [];
         var player2Win = [];
         var winningArrayNew = [];
+        var buttons = document.getElementsByClassName("button");
+
+        // for (var i = 0; i < buttons.length; i++) {
+        //   buttons[i].disabled = false;
+        // }
+
         // Checking the varibles
         // console.log(player1);
         // console.log(player2);
@@ -239,17 +244,34 @@
         // console.log(swap);
         // console.log(board);
         // console.log(playingBoard);
+        // console.log(buttons);
 
         restart.addEventListener("click", start);
-        // restartSamePlayers.addEventListener("click", wipe);
+
+        function hidePopUp() {
+            var x = document.getElementById("popUpMessage");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            }
+            else {
+                x.style.display = "none";
+            }
+            wipe();
+        }
 
         function wipe() {
-            console.log("Wipe");
-            popUpMessage.classList.add("hide");
-            winningArray.splice(0,winningArray.length);
-            board.splice(0,board.length);
-            playingBoard.splice(0,playingBoard.length);
-        }
+                for (var i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = false;
+                buttons[i].innetText = "";
+                buttons[i].innerHTML = "";
+                // console.log("Wiping");
+                winningArray.splice(0,winningArray.length);
+                board.splice(0,board.length);
+                playingBoard.splice(0,playingBoard.length);
+                // console.log(playingBoard);
+                // console.log(buttons);
+                }
+            }
 
         function start() {
             location.reload();
@@ -262,7 +284,7 @@
             // We also want to add our input to the "board" array. The "board" array is going to check 
             // if the script is not runing forever. 
             board.push("X");
-            console.log(board);
+            // console.log(board);
             currentPlayer.innerText = "Now playing: " + player1;
 
         }
@@ -272,7 +294,7 @@
             // console.log(swap);
             // Adding "O" to the "board" array
             board.push("O");
-            console.log(board);
+            // console.log(board);
             currentPlayer.innerText = "Now playing: " +  player2;
         }
         // Functions that makes the game playable
@@ -291,15 +313,15 @@
         }
 
         function checkWinningArray() {
-            if (winningArray == "X") {
+            if (winningArray.includes("X")) {
                 popUpMessage.classList.add("show");
                 message.innerText = player1 + " is the winner";
-                // console.log("X in the winningArray");
+                console.log("X in the winningArray");
             }
-            if (winningArray == "O") {
+            if (winningArray.includes("O")) {
                 popUpMessage.classList.add("show");
                 message.innerText = player2 + " is the winner";
-                // console.log("O in the winningArray");
+                console.log("O in the winningArray");
             }
             if (winningArray == "" && board.length >= 9) {
                 tie();
@@ -307,7 +329,7 @@
         }
 
         function tie() {    
-            popUpMessage.classList.add("show");
+            // popUpMessage.classList.add("show");
             message.innerText = "Tie! Noone is the winner!";
         }
 
@@ -453,6 +475,7 @@
             button.innerText = swap[0];
             button.disabled = true;
             playingBoard[number] = swap[0];
+            console.log(number);
             console.log(playingBoard);
             placeMark();
         }
