@@ -1,3 +1,6 @@
+<!-- This is the lates working version 13.38 2022-05-11 -->
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -142,9 +145,6 @@
         .popUpMessage.show {
             display: flex;
         }
-        .popUpMessage.hide {
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -154,27 +154,23 @@
     <span class="slider round"></span>
     </label>
     </div>
-    <h3 id="h3"> ^ Dark mode switch</h3>
+    <h3 id="h3">Dark mode</h3>
     <h4 id="player1"></h4>
     <h4 id="player2"></h4>
-    <h4 id="currentTurn"></h4>
-    <h4>Scoreboard</h4>
-    <h4></h4>
     <div class="board" id="board">
-        <button onclick="square(0)" class="button" id="0"></button>
-        <button onclick="square(1)" class="button" id="1"></button>
-        <button onclick="square(2)" class="button" id="2"></button>
-        <button onclick="square(3)" class="button" id="3"></button>
-        <button onclick="square(4)" class="button" id="4"></button>
-        <button onclick="square(5)" class="button" id="5"></button>
-        <button onclick="square(6)" class="button" id="6"></button>
-        <button onclick="square(7)" class="button" id="7"></button>
-        <button onclick="square(8)" class="button" id="8"></button>
+        <button onclick="square0()" class="button" id="0"></button>
+        <button onclick="square1()" class="button" id="1"></button>
+        <button onclick="square2()" class="button" id="2"></button>
+        <button onclick="square3()" class="button" id="3"></button>
+        <button onclick="square4()" class="button" id="4"></button>
+        <button onclick="square5()" class="button" id="5"></button>
+        <button onclick="square6()" class="button" id="6"></button>
+        <button onclick="square7()" class="button" id="7"></button>
+        <button onclick="square8()" class="button" id="8"></button>
     </div>
     <div class="popUpMessage" id="popUpMessage">
         <div id="message"></div>
-        <button id="restart">Restart with new players</button>
-        <button onclick="wipe()" id="restartSamePlayers">Restart with the same players</button>
+        <button id="restart">Restart</button>
     </div>
     <script>
         // Varibles at the top. Also checking if a player name is choosen or not.
@@ -211,9 +207,12 @@
             alert("The players have the same username!");
             var player2 = "O";
             var player2Index = "O";
+            // Add restart function here!
         }
 
-        var playingBoard = []; 
+        var playingBoard = [[,,],
+                            [,,],
+                            [,,]]; 
         var swap = [player1Index];
         var board = [];
         var winningArray = [];
@@ -222,35 +221,19 @@
         var restart = document.getElementById("restart");
         var message = document.getElementById("message");
         var firstPlayer = document.getElementById("player1");
-        firstPlayer.innerText = "Player X also known as " + player1 + "! " + player1 + " is playing with the mark: " + player1Index;
+        firstPlayer.innerText = "Player 1 = " + player1;
         var secondPlayer = document.getElementById("player2");
-        secondPlayer.innerText = "Player O is playing under the nickname " + player2 + "! " + player2 + " is playing with the mark: " + player2Index;
-        var currentPlayer = document.getElementById("currentTurn");
-        currentPlayer.innerText = "Now playing: " + player1;
-        var scoreboard = [];
-        var player1Win = [];
-        var player2Win = [];
-        var winningArrayNew = [];
+        secondPlayer.innerText = "Player 2 = " + player2;
         // Checking the varibles
         // console.log(player1);
         // console.log(player2);
         // console.log(player1Index);
         // console.log(player2Index);
-        // console.log(swap);
-        // console.log(board);
-        // console.log(playingBoard);
+        console.log(swap);
+        console.log(board);
+        console.log(playingBoard);
 
         restart.addEventListener("click", start);
-        // restartSamePlayers.addEventListener("click", wipe);
-
-        // function wipe() {
-        //     console.log("Wipe");
-        //     popUpMessage.classList.add("hide");
-        //     winningArray[0] = winningArrayNew;
-        //     // playingBoard[0] = [[,,],
-        //     //                 [,,],
-        //     //                 [,,]];
-        // }
 
         function start() {
             location.reload();
@@ -264,8 +247,6 @@
             // if the script is not runing forever. 
             board.push("X");
             console.log(board);
-            currentPlayer.innerText = "Now playing: " + player1;
-
         }
         function playerCircle() {
             // Here we assign the first index in the array "swap" to "O"
@@ -274,7 +255,6 @@
             // Adding "O" to the "board" array
             board.push("O");
             console.log(board);
-            currentPlayer.innerText = "Now playing: " +  player2;
         }
         // Functions that makes the game playable
         function swapTurn() {
@@ -295,12 +275,12 @@
             if (winningArray == "X") {
                 popUpMessage.classList.add("show");
                 message.innerText = player1 + " is the winner";
-                // console.log("X in the winningArray");
+                console.log("X in the winningArray");
             }
             if (winningArray == "O") {
                 popUpMessage.classList.add("show");
                 message.innerText = player2 + " is the winner";
-                // console.log("O in the winningArray");
+                console.log("O in the winningArray");
             }
             if (winningArray == "" && board.length >= 9) {
                 tie();
@@ -319,68 +299,204 @@
         }
 
         function checkWin() {
-            if (playingBoard[0] && playingBoard[1] && playingBoard[2] == player1Index) {
-                console.log(player1 + " is the winner!");
+            if (playingBoard[0][0] == player1Index) {
+                if (playingBoard[0][1] == player1Index) {
+                    if (playingBoard[0][2] == player1Index) {
+                        console.log(player1 + " is the winner");
+                        winningArray.push("X");
+                    }
+                }
             }
-            if (playingBoard[3] && playingBoard[4] && playingBoard[5] == player1Index) {
-                console.log(player1 + " is the winner!");
+            if (playingBoard[1][0] == player1Index) {
+                if (playingBoard[1][1] == player1Index) {
+                    if (playingBoard[1][2] == player1Index) {
+                        console.log(player1 + " is the winner");
+                        winningArray.push("X");
+                    }
+                }
             }
-            if (playingBoard[6] && playingBoard[7] && playingBoard[8] == player1Index) {
-                console.log(player1 + " is the winner!");
+            if (playingBoard[2][0] == player1Index) {
+                if (playingBoard[2][1] == player1Index) {
+                    if (playingBoard[2][2] == player1Index) {
+                        console.log(player1 + " is the winner");
+                        winningArray.push("X");
+                    }
+                }
             }
-            if (playingBoard[0] && playingBoard[3] && playingBoard[6] == player1Index) {
-                console.log(player1 + " is the winner!");
+            if (playingBoard[0][0] == player1Index) {
+                if (playingBoard[1][0] == player1Index) {
+                    if (playingBoard[2][0] == player1Index) {
+                        console.log(player1 + " is the winner");
+                        winningArray.push("X");
+                    }
+                }
             }
-            if (playingBoard[1] && playingBoard[4] && playingBoard[7] == player1Index) {
-                console.log(player1 + " is the winner!");
+            if (playingBoard[0][1] == player1Index) {
+                if (playingBoard[1][1] == player1Index) {
+                    if (playingBoard[2][1] == player1Index) {
+                        console.log(player1 + " is the winner");
+                        winningArray.push("X");
+                    }
+                }
             }
-            if (playingBoard[2] && playingBoard[5] && playingBoard[8] == player1Index) {
-                console.log(player1 + " is the winner!");
+            if (playingBoard[0][2] == player1Index) {
+                if (playingBoard[1][2] == player1Index) {
+                    if (playingBoard[2][2] == player1Index) {
+                        console.log(player1 + " is the winner");
+                        winningArray.push("X");
+                    }
+                }
             }
-            if (playingBoard[0] && playingBoard[4] && playingBoard[8] == player1Index) {
-                console.log(player1 + " is the winner!");
+            if (playingBoard[0][0] == player1Index) {
+                if (playingBoard[1][1] == player1Index) {
+                    if (playingBoard[2][2] == player1Index) {
+                        console.log(player1 + " is the winner");
+                        winningArray.push("X");
+                    }
+                }
             }
-            if (playingBoard[2] && playingBoard[4] && playingBoard[6] == player1Index) {
-                console.log(player1 + " is the winner!");
+            if (playingBoard[0][2] == player1Index) {
+                if (playingBoard[1][1] == player1Index) {
+                    if (playingBoard[2][0] == player1Index) {
+                        console.log(player1 + " is the winner");
+                        winningArray.push("X");
+                    }
+                }
             }
-            if (playingBoard[0] && playingBoard[1] && playingBoard[2] == player2Index) {
-                console.log(player2 + " is the winner!");
+            if (playingBoard[0][0] == player2Index) {
+                if (playingBoard[0][1] == player2Index) {
+                    if (playingBoard[0][2] == player2Index) {
+                        console.log(player2 + " is the winner");
+                        winningArray.push("O");
+                    }
+                }
             }
-            if (playingBoard[3] && playingBoard[4] && playingBoard[5] == player2Index) {
-                console.log(player2 + " is the winner!");
+            if (playingBoard[1][0] == player2Index) {
+                if (playingBoard[1][1] == player2Index) {
+                    if (playingBoard[1][2] == player2Index) {
+                        console.log(player2 + " is the winner");
+                        winningArray.push("O");
+                    }
+                }
             }
-            if (playingBoard[6] && playingBoard[7] && playingBoard[8] == player2Index) {
-                console.log(player2 + " is the winner!");
+            if (playingBoard[2][0] == player2Index) {
+                if (playingBoard[2][1] == player2Index) {
+                    if (playingBoard[2][2] == player2Index) {
+                        console.log(player2 + " is the winner");
+                        winningArray.push("O");
+                    }
+                }
             }
-            if (playingBoard[0] && playingBoard[3] && playingBoard[6] == player2Index) {
-                console.log(player2 + " is the winner!");
+            if (playingBoard[0][0] == player2Index) {
+                if (playingBoard[1][0] == player2Index) {
+                    if (playingBoard[2][0] == player2Index) {
+                        console.log(player2 + " is the winner");
+                        winningArray.push("O");
+                    }
+                }
             }
-            if (playingBoard[1] && playingBoard[4] && playingBoard[7] == player2Index) {
-                console.log(player2 + " is the winner!");
+            if (playingBoard[0][1] == player2Index) {
+                if (playingBoard[1][1] == player2Index) {
+                    if (playingBoard[2][1] == player2Index) {
+                        console.log(player2 + " is the winner");
+                        winningArray.push("O");
+                    }
+                }
             }
-            if (playingBoard[2] && playingBoard[5] && playingBoard[8] == player2Index) {
-                console.log(player2 + " is the winner!");
+            if (playingBoard[0][2] == player2Index) {
+                if (playingBoard[1][2] == player2Index) {
+                    if (playingBoard[2][2] == player2Index) {
+                        console.log(player2 + " is the winner");
+                        winningArray.push("O");
+                    }
+                }
             }
-            if (playingBoard[0] && playingBoard[4] && playingBoard[8] == player2Index) {
-                console.log(player2 + " is the winner!");
+            if (playingBoard[0][0] == player2Index) {
+                if (playingBoard[1][1] == player2Index) {
+                    if (playingBoard[2][2] == player2Index) {
+                        console.log(player2 + " is the winner");
+                        winningArray.push("O");
+                    }
+                }
             }
-            if (playingBoard[2] && playingBoard[4] && playingBoard[6] == player2Index) {
-                console.log(player2 + " is the winner!");
+            if (playingBoard[0][2] == player2Index) {
+                if (playingBoard[1][1] == player2Index) {
+                    if (playingBoard[2][0] == player2Index) {
+                        console.log(player2 + " is the winner");
+                        winningArray.push("O");
+                    }
+                }
             }
-
         }
 
-        function square(number) {
-            var button = document.getElementById(number);
+        // These is the buttons. Starting with 0 since arrays index starts at 0. 
+        function square0() {
+            var button = document.getElementById("0");
             button.innerText = swap[0];
             button.disabled = true;
-            playingBoard[number] = swap[0];
-            // console.log(number);
-            console.log(playingBoard);
+            playingBoard[0][0] = swap[0];
             placeMark();
         }
+        function square1() {
+            var button = document.getElementById("1");
+            button.innerText = swap[0];
+            button.disabled = true;
+            playingBoard[0][1] = swap[0];
+            placeMark();
 
+        }
+        function square2() {
+            var button = document.getElementById("2");
+            button.innerText = swap[0];
+            button.disabled = true;
+            playingBoard[0][2] = swap[0];
+            placeMark();
+
+        }
+        function square3() {
+            var button = document.getElementById("3");
+            button.innerText = swap[0];
+            button.disabled = true;
+            playingBoard[1][0] = swap[0];
+            placeMark();
+        }
+        function square4() {
+            var button = document.getElementById("4");
+            button.innerText = swap[0];
+            button.disabled = true;
+            playingBoard[1][1] = swap[0];
+            placeMark();
+        }
+        function square5() {
+            var button = document.getElementById("5");
+            button.innerText = swap[0];
+            button.disabled = true;
+            playingBoard[1][2] = swap[0];
+            placeMark();
+        }
+        function square6() {
+            var button = document.getElementById("6");
+            button.innerText = swap[0];
+            button.disabled = true;
+            playingBoard[2][0] = swap[0];
+            placeMark();
+        }
+        function square7() {
+            var button = document.getElementById("7");
+            button.innerText = swap[0];
+            button.disabled = true;
+            playingBoard[2][1] = swap[0];
+            placeMark();
+        }
+        function square8() {
+            var button = document.getElementById("8");
+            button.innerText = swap[0];
+            button.disabled = true;
+            playingBoard[2][2] = swap[0];
+            placeMark();
+        }
         function backgroundColor() {
+            var box = document.getElementById("switchBox").checked;
             if (background == "x") {
                 document.body.style.backgroundColor = "DarkGrey";
                 background[0] = "o";
@@ -398,3 +514,8 @@
     </script>
 </body>
 </html>
+
+<!-- Notes -->
+<!-- Maybe add a scoreboard for the players to keep track of the score -->
+<!-- Problems -->
+<!-- Tie message pops up if someone wins on the last move -->
