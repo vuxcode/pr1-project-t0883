@@ -171,13 +171,14 @@
         <button onclick="square(7)" class="button" id="7" ></button>
         <button onclick="square(8)" class="button" id="8" ></button>
     </div>
-    <div class="popUpMessage" id="popUpMessage">
+    <div class="popUpMessage" id="popUpMessage" style="display: none;">
         <div id="message"></div>
         <button id="restart">Restart with new players</button>
         <button onclick="hidePopUp()">Continue with the same players</button>
     </div>
     <script>
         // Varibles at the top. Also checking if a player name is choosen or not.
+
         var player1 = prompt("Enter player 1 name here:");
         var player2 = prompt("Enter player 2 name here:");
         if (Boolean(player1) == false) {
@@ -229,12 +230,7 @@
         var scoreboard = [];
         var player1Win = [];
         var player2Win = [];
-        var winningArrayNew = [];
         var buttons = document.getElementsByClassName("button");
-
-        // for (var i = 0; i < buttons.length; i++) {
-        //   buttons[i].disabled = false;
-        // }
 
         // Checking the varibles
         // console.log(player1);
@@ -314,12 +310,24 @@
 
         function checkWinningArray() {
             if (winningArray.includes("X")) {
-                popUpMessage.classList.add("show");
+            var x = document.getElementById("popUpMessage");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            }
+            else {
+                x.style.display = "none";
+            }
                 message.innerText = player1 + " is the winner";
                 console.log("X in the winningArray");
             }
             if (winningArray.includes("O")) {
-                popUpMessage.classList.add("show");
+            var x = document.getElementById("popUpMessage");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            }
+            else {
+                x.style.display = "none";
+            }
                 message.innerText = player2 + " is the winner";
                 console.log("O in the winningArray");
             }
