@@ -114,6 +114,7 @@
             left: 0;
             right: 0;
             bottom: 0;
+            text-align: center;
             background-color: grey;
             justify-content: center;
             align-items: center;
@@ -231,6 +232,9 @@
         var player1Win = [];
         var player2Win = [];
         var buttons = document.getElementsByClassName("button");
+        var popUp = document.getElementById("popUpMessage");
+
+        
 
         // Checking the varibles
         // console.log(player1);
@@ -245,13 +249,7 @@
         restart.addEventListener("click", start);
 
         function hidePopUp() {
-            var x = document.getElementById("popUpMessage");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            }
-            else {
-                x.style.display = "none";
-            }
+            popUp.style.display = "none";
             wipe();
         }
 
@@ -310,24 +308,12 @@
 
         function checkWinningArray() {
             if (winningArray.includes("X")) {
-            var x = document.getElementById("popUpMessage");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            }
-            else {
-                x.style.display = "none";
-            }
+                popUp.style.display = "block";
                 message.innerText = player1 + " is the winner";
                 console.log("X in the winningArray");
             }
             if (winningArray.includes("O")) {
-            var x = document.getElementById("popUpMessage");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            }
-            else {
-                x.style.display = "none";
-            }
+                popUp.style.display = "block";
                 message.innerText = player2 + " is the winner";
                 console.log("O in the winningArray");
             }
@@ -336,8 +322,8 @@
             }
         }
 
-        function tie() {    
-            // popUpMessage.classList.add("show");
+        function tie() {
+            popUp.style.display = "block";
             message.innerText = "Tie! Noone is the winner!";
         }
 
