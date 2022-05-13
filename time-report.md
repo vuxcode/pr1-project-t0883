@@ -38,3 +38,9 @@
   users. Total time is now 25 hours.
 -2022-05-11
   The program is now done. It runs as I want and expect. I have about 1 or 2 hours left on the clock until I reach 30 hours. 
+-2022-05-12
+  After speaking with Colin and getting some feedback on the project I fixed a couple of things. I made the square function that was previously
+  9 diffrent functions in to 1 single function. This broke the checkWin function that I had made so I had to rethink it and redo it from 
+  scratch. After that I made a pop up message for the players so they could see who is the winner or if the game ended in a tie. Here the 
+  players can choose to play with the same players or restart with new names and a wiped scoreboard. 
+  I added a scoreboard. 
