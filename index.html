@@ -86,7 +86,7 @@
         }
         .board {
             width: 100vw;
-            height: 75vh;
+            height: 50vh;
             display: grid;
             justify-content: center;
             align-content: center;
@@ -108,8 +108,9 @@
             color: black;
         }
         .popUpMessage {
-            display: none;
+            display: flex;
             position: fixed;
+            margin: auto;
             top: 0;
             left: 0;
             right: 0;
@@ -140,12 +141,6 @@
             border-color: whitesmoke;
             opacity: 1;
         }
-        .popUpMessage.show {
-            display: flex;
-        }
-        .popUpMessage.hide {
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -159,8 +154,9 @@
     <h4 id="player1"></h4>
     <h4 id="player2"></h4>
     <h4 id="currentTurn"></h4>
-    <h4>Scoreboard</h4>
-    <h4></h4>
+    <h4>Scoreboard:</h4>
+    <h4 id="player1score"></h4>
+    <h4 id="player2score"></h4>
     <div class="board" id="board">
         <button onclick="square(0)" class="button" id="0" ></button>
         <button onclick="square(1)" class="button" id="1" ></button>
@@ -175,13 +171,14 @@
     <div class="popUpMessage" id="popUpMessage" style="display: none;">
         <div id="message"></div>
         <button id="restart">Restart with new players</button>
-        <button onclick="hidePopUp()">Continue with the same players</button>
+        <button onclick="wipe()">Continue with the same players</button>
     </div>
     <script>
         // Varibles at the top. Also checking if a player name is choosen or not.
 
         var player1 = prompt("Enter player 1 name here:");
         var player2 = prompt("Enter player 2 name here:");
+        // Choosed to use Boolean because it also covers if the chosen playername is null.
         if (Boolean(player1) == false) {
             console.log("player name 1 is not set");
             var player1 = "X";
@@ -190,51 +187,66 @@
             console.log("player name 2 is not set");
             var player2 = "O";
         }
-        console.log(player1);
-        console.log(player2);
-
+        // console.log(player1);
+        // console.log(player2);
+        // Picking out the first letter in the playernames to use it as a marker in the game.
         var player1Index = player1[0];
         var player2Index = player2[0];
 
-        console.log(player1Index);
-        console.log(player2Index);
-
+        // console.log(player1Index);
+        // console.log(player2Index);
+        // Here I prevent the players from having a blank mark.
         if (player1Index == " ") {
             var player1Index = "X";
         }
         if (player2Index == " ") {
             var player2Index = "O";
         }
+        // Here if the players have the same playername then they will be given the default X and O as marks.
         if (player1Index === player2Index) {
             var player1Index = "X";
             var player2Index = "O";
         }
+        // Notifying the players that they have choosen the same playername and player 2 will be playing with O.
         if (player1 === player2) {
             alert("The players have the same username!");
             var player2 = "O";
             var player2Index = "O";
         }
-
+        // Here are the most crucial varibles in the program!
+        // Playingboard for win checking
         var playingBoard = []; 
+        // Swap for swaping players back and forth.
         var swap = [player1Index];
+        // Board is used to check when the playingboard is full. With the choosen layout so if a player places
+        // a mark in the bottom right then the lenght of the playingboard array is = 9. So I use board instead
+        // to look for when the board is full and noone is a winner. Then the tie message will pop up.
         var board = [];
+        // If someone is a winner then this array will get an "X" or an "O". When this happens then the winning
+        // message will pop up on the screen.
         var winningArray = [];
+        // This is for the dark mode switch that switches the background to a darker color.
         var background = ["x"];
+        // These are the arrays that will fill up with the player wins and display below the scoreboard.
+        var player1Win = [];
+        var player2Win = [];
+        // Getting the IDs for the popup messages and the buttons inside of them.
         var restart = document.getElementById("restart");
         var message = document.getElementById("message");
+        var popUp = document.getElementById("popUpMessage");
+        var player1scoreboard = document.getElementById("player1score");
+        var player2scoreboard = document.getElementById("player2score");
+        // Displaying the player names and whos turn it is. Also showing their playermark.
         var firstPlayer = document.getElementById("player1");
         firstPlayer.innerText = "Player X also known as " + player1 + "! " + player1 + " is playing with the mark: " + player1Index;
         var secondPlayer = document.getElementById("player2");
         secondPlayer.innerText = "Player O is playing under the nickname " + player2 + "! " + player2 + " is playing with the mark: " + player2Index;
         var currentPlayer = document.getElementById("currentTurn");
         currentPlayer.innerText = "Now playing: " + player1;
-        var scoreboard = [];
-        var player1Win = [];
-        var player2Win = [];
+        // Getting the buttons in the playingboard so I can wipe them from text on restart with the same players.
         var buttons = document.getElementsByClassName("button");
-        var popUp = document.getElementById("popUpMessage");
 
-        
+        // Here I have some console log that I have used during the project to check diffrent things.
 
         // Checking the varibles
         // console.log(player1);
@@ -246,13 +258,16 @@
         // console.log(playingBoard);
         // console.log(buttons);
 
+        // This part reload the hole page so the players can choose a new player name and mark. 
         restart.addEventListener("click", start);
 
-        function hidePopUp() {
-            popUp.style.display = "none";
-            wipe();
+        function start() {
+            location.reload();
         }
 
+        // This is the function that hides the pop up screen when someone won or the game tied.
+        // This also wipes the playingboard buttons and the arrays. Reason for using a loop here 
+        // is that the .disabled must go through all the buttons that have been pushed.
         function wipe() {
                 for (var i = 0; i < buttons.length; i++) {
                 buttons[i].disabled = false;
@@ -262,77 +277,74 @@
                 winningArray.splice(0,winningArray.length);
                 board.splice(0,board.length);
                 playingBoard.splice(0,playingBoard.length);
-                // console.log(playingBoard);
-                // console.log(buttons);
+                popUp.style.display = "none";
                 }
             }
 
-        function start() {
-            location.reload();
-        }
-        // Functions starting with the players
+        // Here is the player functions. 
         function playerX() {
-            // Here we assign the first index in the array "swap" to "X"
+            // Here the swap array is given the player1s first letter.
             swap[0] = player1Index;
             // console.log(swap);
-            // We also want to add our input to the "board" array. The "board" array is going to check 
-            // if the script is not runing forever. 
+            // Here the player X function pushes a X in to the board array so  
+            // the game will tie when the array reaches 9.
             board.push("X");
             // console.log(board);
             currentPlayer.innerText = "Now playing: " + player1;
 
         }
         function playerCircle() {
-            // Here we assign the first index in the array "swap" to "O"
             swap[0] = player2Index;
             // console.log(swap);
-            // Adding "O" to the "board" array
+            // Adding "O" to the board array.
             board.push("O");
             // console.log(board);
             currentPlayer.innerText = "Now playing: " +  player2;
         }
         // Functions that makes the game playable
         function swapTurn() {
-            // Here we want to check if the index of the "swap" array is equal to "X". If it is it will place a "0"
+            // Here the swapTurn checks if the index of the "swap" array is equal to player1Index. Then it will play player 2 next.
             if (swap == player1Index) {
-                // console.log("The first part is working now");
+                // console.log("The first part of swapTurn is working now");
                 playerCircle();
             }
             else {
             // Here it will run the playerX funtion if the "swap" is not equal to "X" 
-                // console.log("The second part is working now");
+                // console.log("The second part of swapTurn is working now");
                 playerX();
-
             }
         }
-
+        // This is the function that checks the winningarray for a winner.
         function checkWinningArray() {
             if (winningArray.includes("X")) {
-                popUp.style.display = "block";
-                message.innerText = player1 + " is the winner";
-                console.log("X in the winningArray");
+                // Poping up the winning message on the screen.
+                popUp.style.display = "flex";
+                message.innerText = "Player 1 also known as " + player1 + " is the winner";
+                // Pushes an "X" in to the player1Win array so the scoreboard will show how many wins a player has.
+                player1Win.push("X");
+                player1scoreboard.innerText = player1 + " points: " + player1Win.length;
+                // console.log("X in the winningArray");
             }
             if (winningArray.includes("O")) {
-                popUp.style.display = "block";
-                message.innerText = player2 + " is the winner";
-                console.log("O in the winningArray");
+                popUp.style.display = "flex";
+                message.innerText = "Player 2 also known as " +  player2 + " is the winner";
+                player2Win.push("O");
+                player2scoreboard.innerText = player2 + " points: " + player2Win.length;
+                // console.log("O in the winningArray");
             }
             if (winningArray == "" && board.length >= 9) {
-                tie();
+                popUp.style.display = "flex";
+                message.innerText = "Tie! Noone is the winner!";
             }
         }
-
-        function tie() {
-            popUp.style.display = "block";
-            message.innerText = "Tie! Noone is the winner!";
-        }
-
+        // This a function that runs all the functions to check for a win or swaping turns.
         function placeMark() {
             checkWin();
-            swapTurn();
             checkWinningArray();
+            swapTurn();
         }
-
+        // This is the function that checks the playingboard array for the order of where the "X"s and "O"s
+        // are located. It pushes an "X" or an "O" to the winningArray which makes the pop up appare on the screen.
         function checkWin() {
             if (playingBoard[0] == player1Index) {
                 if (playingBoard[1] == player1Index) {
@@ -463,7 +475,9 @@
                 }
             }
         }
-
+        // This is the function that gets the input from all the squares. It updates the text to the playermark and
+        // it disables the square so the players cant press them again. It also runs the placeMark() function 
+        // to check for win or tie and swaps turns.
         function square(number) {
             var button = document.getElementById(number);
             button.innerText = swap[0];
@@ -473,21 +487,21 @@
             console.log(playingBoard);
             placeMark();
         }
-
+        // This is the switch function for the background so that the players can choose a darker or lighter color.
         function backgroundColor() {
+            var switchText = document.getElementById("h3");
             if (background == "x") {
                 document.body.style.backgroundColor = "DarkGrey";
                 background[0] = "o";
-                var switchText = document.getElementById("h3");
                 switchText.innerText = "Light mode";
             }
             else {
                 document.body.style.backgroundColor = "White";
                 background[0] = "x";
-                var switchText = document.getElementById("h3");
                 switchText.innerText = "Dark mode";
             }
         }
+        
 
     </script>
 </body>
