@@ -215,7 +215,9 @@
         }
         // Here are the most crucial varibles in the program!
         // Playingboard for win checking
-        var playingBoard = []; 
+        var playingBoard = [];
+        // This is the grid size that is used in the loop that checks for wins.
+        var grid = 3;
         // Swap for swaping players back and forth.
         var swap = [player1Index];
         // Board is used to check when the playingboard is full. With the choosen layout so if a player places
@@ -339,138 +341,120 @@
         }
         // This a function that runs all the functions to check for a win or swaping turns.
         function placeMark() {
-            checkWin();
+            // checkWin();
+            checkEverything();
             swapTurn();
             checkWinningArray();
         }
         // This is the function that checks the playingboard array for the order of where the "X"s and "O"s
         // are located. It pushes an "X" or an "O" to the winningArray which makes the pop up appare on the screen.
-        function checkWin() {
-            if (playingBoard[0] == player1Index) {
-                if (playingBoard[1] == player1Index) {
-                    if (playingBoard[2] == player1Index) {
-                       console.log(player1 + " is the winner!");
-                       winningArray.push("X"); 
+        function checkXRow(input) {
+            if (playingBoard[input] == player1Index) {
+                if (playingBoard[input + 1] == player1Index) {
+                    if (playingBoard[input + 2] == player1Index) {
+                        // console.log("X Here");
+                        winningArray.push("X");
                     }
                 }
             }
-            if (playingBoard[3] == player1Index) {
-                if (playingBoard[4] == player1Index) {
-                    if (playingBoard[5] == player1Index) {
-                       console.log(player1 + " is the winner!");
-                       winningArray.push("X"); 
+        }
+        function checkXCol(input) {
+            if (playingBoard[input] == player1Index) {
+                if (playingBoard[input + 3] == player1Index) {
+                    if (playingBoard[input + 6] == player1Index) {
+                        // console.log("X There");
+                        winningArray.push("X");
                     }
                 }
             }
-            if (playingBoard[6] == player1Index) {
-                if (playingBoard[7] == player1Index) {
-                    if (playingBoard[8] == player1Index) {
-                       console.log(player1 + " is the winner!");
-                       winningArray.push("X"); 
+        }
+        function checkXDiag(input) {
+            if (playingBoard[input] == player1Index) {
+                if (playingBoard[input + 4] == player1Index) {
+                    if (playingBoard[input + 8] == player1Index) {
+                        // console.log("X Over here");
+                        winningArray.push("X");
                     }
                 }
             }
-            if (playingBoard[0] == player1Index) {
-                if (playingBoard[4] == player1Index) {
-                    if (playingBoard[8] == player1Index) {
-                       console.log(player1 + " is the winner!");
-                       winningArray.push("X"); 
+        }
+        function checkOthXDiag(input) {
+            if (playingBoard[input] == player1Index) {
+                if (playingBoard[input + 2] == player1Index) {
+                    if (playingBoard[input + 4] == player1Index) {
+                        // console.log("X Over there");
+                        winningArray.push("X");
                     }
                 }
             }
-            if (playingBoard[2] == player1Index) {
-                if (playingBoard[4] == player1Index) {
-                    if (playingBoard[6] == player1Index) {
-                       console.log(player1 + " is the winner!");
-                       winningArray.push("X"); 
+        }
+        function checkORow(input) {
+            if (playingBoard[input] == player2Index) {
+                if (playingBoard[input + 1] == player2Index) {
+                    if (playingBoard[input + 2] == player2Index) {
+                        // console.log("O Here");
+                        winningArray.push("O");
                     }
                 }
             }
-            if (playingBoard[0] == player1Index) {
-                if (playingBoard[3] == player1Index) {
-                    if (playingBoard[6] == player1Index) {
-                       console.log(player1 + " is the winner!");
-                       winningArray.push("X"); 
+        }
+        function checkOCol(input) {
+            if (playingBoard[input] == player2Index) {
+                if (playingBoard[input + 3] == player2Index) {
+                    if (playingBoard[input + 6] == player2Index) {
+                        // console.log("O There");
+                        winningArray.push("O");
                     }
                 }
             }
-            if (playingBoard[1] == player1Index) {
-                if (playingBoard[4] == player1Index) {
-                    if (playingBoard[7] == player1Index) {
-                       console.log(player1 + " is the winner!");
-                       winningArray.push("X"); 
+        }
+        function checkODiag(input) {
+            if (playingBoard[input] == player2Index) {
+                if (playingBoard[input + 4] == player2Index) {
+                    if (playingBoard[input + 8] == player2Index) {
+                        // console.log("O Over here");
+                        winningArray.push("O");
                     }
                 }
             }
-            if (playingBoard[2] == player1Index) {
-                if (playingBoard[5] == player1Index) {
-                    if (playingBoard[8] == player1Index) {
-                       console.log(player1 + " is the winner!");
-                       winningArray.push("X"); 
+        }
+        function checkOthODiag(input) {
+            if (playingBoard[input] == player2Index) {
+                if (playingBoard[input + 2] == player2Index) {
+                    if (playingBoard[input + 4] == player2Index) {
+                        // console.log("O Over there");
+                        winningArray.push("O");
                     }
                 }
             }
-            if (playingBoard[0] == player2Index) {
-                if (playingBoard[1] == player2Index) {
-                    if (playingBoard[2] == player2Index) {
-                       console.log(player2 + " is the winner!"); 
-                       winningArray.push("O");
-                    }
-                }
-            }
-            if (playingBoard[3] == player2Index) {
-                if (playingBoard[4] == player2Index) {
-                    if (playingBoard[5] == player2Index) {
-                       console.log(player2 + " is the winner!");
-                       winningArray.push("O"); 
-                    }
-                }
-            }
-            if (playingBoard[6] == player2Index) {
-                if (playingBoard[7] == player2Index) {
-                    if (playingBoard[8] == player2Index) {
-                       console.log(player2 + " is the winner!");
-                       winningArray.push("O"); 
-                    }
-                }
-            }
-            if (playingBoard[0] == player2Index) {
-                if (playingBoard[4] == player2Index) {
-                    if (playingBoard[8] == player2Index) {
-                       console.log(player2 + " is the winner!");
-                       winningArray.push("O"); 
-                    }
-                }
-            }
-            if (playingBoard[2] == player2Index) {
-                if (playingBoard[4] == player2Index) {
-                    if (playingBoard[6] == player2Index) {
-                       console.log(player2 + " is the winner!");
-                       winningArray.push("O"); 
-                    }
-                }
-            }
-            if (playingBoard[0] == player2Index) {
-                if (playingBoard[3] == player2Index) {
-                    if (playingBoard[6] == player2Index) {
-                       console.log(player2 + " is the winner!");
-                       winningArray.push("O"); 
-                    }
-                }
-            }
-            if (playingBoard[1] == player2Index) {
-                if (playingBoard[4] == player2Index) {
-                    if (playingBoard[7] == player2Index) {
-                       console.log(player2 + " is the winner!");
-                       winningArray.push("O"); 
-                    }
-                }
-            }
-            if (playingBoard[2] == player2Index) {
-                if (playingBoard[5] == player2Index) {
-                    if (playingBoard[8] == player2Index) {
-                       console.log(player2 + " is the winner!");
-                       winningArray.push("O"); 
+        }
+        // function checkEverything() {
+        //     for (var i = playingBoard.length - 1; i >= 0; i--) {
+        //         // console.log("in the for loop");
+        //         checkXRow(i);
+        //         checkORow(i);
+        //         checkXCol(i);
+        //         checkOCol(i);
+        //         checkXDiag(i);
+        //         checkODiag(i);
+        //         checkOthXDiag(i);
+        //         checkOthODiag(i);
+        //     }
+        // }
+        function checkEverything() {
+            for (var i = 0; i <= playingBoard.length; i += grid) {
+                checkXRow(i);
+                checkORow(i);
+                for (var j = 0; j <= playingBoard.length; j ++) {
+                    checkXCol(j);
+                    checkOCol(j);
+                    for (var k = 0; k <= playingBoard.length; k += grid +1) {
+                        checkXDiag(k);
+                        checkODiag(k);
+                        for (var l = 2; l <= playingBoard.length; l += grid -1) {
+                        checkOthXDiag(l);
+                        checkOthODiag(l);    
+                        }   
                     }
                 }
             }
@@ -501,8 +485,6 @@
                 switchText.innerText = "Dark mode";
             }
         }
-        
-
     </script>
 </body>
 </html>
