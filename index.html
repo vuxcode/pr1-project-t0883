@@ -412,7 +412,7 @@
             if (playingBoard[input] == player2Index) {
                 if (playingBoard[input + 4] == player2Index) {
                     if (playingBoard[input + 8] == player2Index) {
-                        // console.log("O Over here");
+                        console.log("O Over here");
                         winningArray.push("O");
                     }
                 }
@@ -422,7 +422,7 @@
             if (playingBoard[input] == player2Index) {
                 if (playingBoard[input + 2] == player2Index) {
                     if (playingBoard[input + 4] == player2Index) {
-                        // console.log("O Over there");
+                        console.log("O Over there");
                         winningArray.push("O");
                     }
                 }
@@ -445,20 +445,20 @@
             for (var i = 0; i <= playingBoard.length; i += grid) {
                 checkXRow(i);
                 checkORow(i);
-                for (var j = 0; j <= playingBoard.length; j ++) {
-                    checkXCol(j);
-                    checkOCol(j);
-                    for (var k = 0; k <= playingBoard.length; k += grid +1) {
-                        checkXDiag(k);
-                        checkODiag(k);
-                        for (var l = 2; l <= playingBoard.length; l += grid -1) {
-                        checkOthXDiag(l);
-                        checkOthODiag(l);    
-                        }   
-                    }
-                }
             }
-        }
+            for (var j = 0; j <= playingBoard.length; j ++) {
+                checkXCol(j);
+                checkOCol(j);
+            }
+            for (var k = 0; k <= playingBoard.length; k += grid +1) {
+                checkXDiag(k);
+                checkODiag(k);
+            }
+            for (var l = 2; l <= playingBoard.length; l += grid -1) {
+                checkOthXDiag(l);
+                checkOthODiag(l);    
+            }   
+        }   
         // This is the function that gets the input from all the squares. It updates the text to the playermark and
         // it disables the square so the players cant press them again. It also runs the placeMark() function 
         // to check for win or tie and swaps turns.
