@@ -1,0 +1,171 @@
+<meta name="color-scheme" content="dark">
+
+<!-- The program starts here! -->
+<script>
+  // THIS IS WHAT WE'RE TRYING TO CREATE
+  // if (playingBoard[0] == player1Index) {
+  //     if (playingBoard[1] == player1Index) {
+  //         if (playingBoard[2] == player1Index) {
+  //             console.log(player1 + " is the winner!");
+  //             winningArray.push("X"); 
+  //         }
+  //     }
+  // }
+  // if (playingBoard[3] == player1Index) {
+  //     if (playingBoard[4] == player1Index) {
+  //         if (playingBoard[5] == player1Index) {
+  //             console.log(player1 + " is the winner!");
+  //             winningArray.push("X"); 
+  //         }
+  //     }
+  // }
+
+  // Store the playing token to check for
+  var player1Index = "X";
+
+  // Fake input for the playing board for testing purposes
+  var playingBoard = ["O", "X", "X",
+                      "X", "O", "X",
+                      "O", "X", "X"
+                    ];
+
+  // Replace the parts of the code that don't repeat
+
+  // if (playingBoard[num1] == player1Index) {
+  //   if (playingBoard[num2] == player1Index) {
+  //       if (playingBoard[num3] == player1Index) {
+  //           console.log("This is the winning condition");
+  //       }
+  //   }
+  // }
+
+  // We are using "num" to represent an unknown number (think algebra in maths!)
+  // So now we have 3 unknown numbers; "num1", "num2" and "num3"
+
+  // Try and find the pattern between the 3 numbers
+  // For the rows we are increasing the number by 1
+  // row = num1, num1 + 1, num1 + 2
+
+  // So now we can write a function that will check all the rows
+  function checkRow(input) {
+    // Check the left position
+    if (playingBoard[input] == player1Index) {
+      // Check the middle position
+      if (playingBoard[input + 1] == player1Index) {
+        // Check the right position
+        if (playingBoard[input + 2] == player1Index) {
+          // If the computer gets to this point then this row "wins"
+          console.log("Row starting at " + input + " wins!");
+        }
+      }
+    }
+  }
+
+  // Similarly to the rows, find the pattern between the 3 numbers for the columns
+  // For the columns we are adding the "width of the grid" or 3 to each position
+  // col = num1, num1 + 3, num1 + (2 * 3)
+
+  // Now we can use this information to check all the columns
+  function checkCol(input) {
+    // Check the left position
+    if (playingBoard[input] == player1Index) {
+      // Check the middle position
+      if (playingBoard[input + 3] == player1Index) {
+        // Check the right position
+        if (playingBoard[input + 6] == player1Index) {
+          // If the computer gets to this point then this column "wins"
+          console.log("Col starting at " + input + " wins!");
+        }
+      }
+    }
+  }
+
+  // Now we can write a function that will check everything
+  function checkEverything() {
+    // Check all the rows
+    checkRow(0);
+    checkRow(3);
+    checkRow(6);
+    // Check all the columns
+    checkCol(0);
+    checkCol(1);
+    checkCol(2);
+  }
+
+  // Run the function to check everything
+  checkEverything();
+
+  // As an extra challenge, to take the idea of removing repetion one step further you could remove the repetition in the checkEverything function using a for-loop - IF you see the pattern in the input numbers! Then you could apply this logic to ANY grid size!
+  
+
+  // This for-loop checks all the winning conditions too but this one has a false wining condition in it aswell.
+    // function checkEverything() {
+  //     for (var i = playingBoard.length - 1; i >= 0; i--) {
+  //         // console.log("in the for loop");
+  //         checkRow(i);
+  //         checkCol(i);
+  //         checkDiag(i);
+  //         checkOthDiag(i);
+  //     }
+  // } 
+  // This happens when the playingboard looks like this playingBoard = ["X", "O", "X",
+                                                                  //   "O", "X", "O",
+                                                                  //   "", "", ""
+                                                                  //   ];
+  // This is the only false winning condition that I can find and I fix it by looping the with loops with diffrent amount of steps.
+  // This for-loop checks all the winning conditions and does not produce any false winning conditions.
+  // function checkEverything() {
+  //     for (var i = 0; i <= playingBoard.length; i+=3) {
+  //         checkRow(i);
+  //         for (var j = 0; j <= playingBoard.length; j++) {
+  //             checkCol(j);
+  //             for (var k = 0; k <= playingBoard.length; k+=4) {
+  //                 checkDiag(k);
+  //                 for (var l = 2; l <= playingBoard.length; l +=2) {
+  //                 checkOthDiag(l);    
+  //                 }   
+  //             }
+  //         }
+  //     }
+  // }
+  // Making this work for every grid size then it should be only adding the gridsize and change the numbers around.
+  // var grid = 3;
+  //   function checkEverything() {
+  //     for (var i = 0; i <= playingBoard.length; i + grid) {
+  //         checkRow(i);
+  //         for (var j = 0; j <= playingBoard.length; j++) {
+  //             checkCol(j);
+  //             for (var k = 0; k <= playingBoard.length; k + grid + 1) {
+  //                 checkDiag(k);
+  //                 for (var l = 2; l <= playingBoard.length; l + grid + 2) {
+  //                 checkOthDiag(l);    
+  //                 }   
+  //             }
+  //         }
+  //     }
+  // }
+  // By not having the loop in side of a loop then I can use var i in every loop. This also 
+  // prevents the last winning condition from looping a bunch of times when the condition
+  // is met. This is the loop that I will be using in my tic tac toe program. Here I also added
+  // the function for O player.
+  // This is the grid size. 
+  // var grid = 3; 
+  //   function checkEverything() {
+  //     for (var i = 0; i <= playingBoard.length; i += grid) {
+  //         checkXRow(i);
+  //         checkORow(i);
+  //     }
+  //     for (var i = 0; i <= playingBoard.length; i ++) {
+  //         checkXCol(i);
+  //         checkOCol(i);
+  //     }
+  //     for (var i = 0; i <= playingBoard.length; i += grid +1) {
+  //         checkXDiag(i);
+  //         checkODiag(i);
+  //     }
+  //     for (var i = 2; i <= playingBoard.length; i += grid -1) {
+  //         checkOthXDiag(i);
+  //         checkOthODiag(i);    
+  //     }   
+  // } 
+</script>
