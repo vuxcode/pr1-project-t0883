@@ -43,4 +43,8 @@
   9 diffrent functions in to 1 single function. This broke the checkWin function that I had made so I had to rethink it and redo it from 
   scratch. After that I made a pop up message for the players so they could see who is the winner or if the game ended in a tie. Here the 
   players can choose to play with the same players or restart with new names and a wiped scoreboard. 
-  I added a scoreboard. 
+  I added a scoreboard.
+-2022-05-24
+  This time update will be a summary for the days that I have updated the project since the 12 of may. I have spent some hours on the project 
+  and redone some stuff after classes and meeting with Colin. I updated the algorithm that checks the playingboard. I redone the function that 
+  checks the winning conditions. I also added comments so that people could follow the thoght process and the logic behind the project. 
